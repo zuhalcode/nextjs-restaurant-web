@@ -1,11 +1,18 @@
 import Button from "@components/atoms/Button";
 import Input from "@components/atoms/Input";
+import Loading from "@components/atoms/Loading";
 import AuthLayout from "@components/auth/templates/AuthLayout";
-import Head from "next/head";
+import axiosClient from "@lib/axios";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 export default function Register() {
+  const [loading, setLoading] = useState(false);
+  const { status } = useSession();
+  const router = useRouter();
+
   const [state, setState] = useState({
     name: "",
     email: "",
@@ -19,9 +26,25 @@ export default function Register() {
     });
   };
 
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      const res = await axiosClient.post("/api/auth/register", state);
+      if (res.error) console.log("error", res.error);
+      setLoading(false);
+      router.push("/auth/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <AuthLayout head="Register Page">
-      <form className="flex flex-col items-start justify-start space-y-5 px-5 pt-24">
+      <form
+        className="flex flex-col items-start justify-start space-y-5 px-5 pt-24"
+        onSubmit={handleOnSubmit}
+      >
         <p className="text-2xl font-semibold">Create an Account</p>
 
         <Input
@@ -49,10 +72,14 @@ export default function Register() {
           handleOnChange={handleOnChange}
           className="border-b"
         />
+        {loading ? (
+          <Loading />
+        ) : (
+          <Button size="sm" className="mx-auto mt-3 w-full">
+            Create Account
+          </Button>
+        )}
 
-        <Button size="sm" className="mx-auto mt-3 w-full">
-          Create Account
-        </Button>
         <div className="mx-auto mt-5 flex gap-1 text-center text-sm">
           Already have an account ?
           <Link

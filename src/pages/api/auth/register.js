@@ -8,8 +8,9 @@ import User from "@model/User";
 import bcrypt from "bcryptjs";
 
 export default async function handler(req, res) {
-  if (req.method) {
+  if (req.method === "POST") {
     const { name, email, password } = req.body;
+    console.log(req.body);
     try {
       await connect();
 
