@@ -4,15 +4,16 @@ import DashboardLayout from "@components/dashboard/templates/DashboardLayout";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
 
 export default function Dashboard() {
   const menu = ["", "", "", ""];
-  const user = useSelector((state) => state.auth.userData);
   const router = useRouter();
+  const { status } = useSession();
 
   useEffect(() => {
-    if (!user) router.push("/auth/login");
-  }, [router, user]);
+    if (status === "unauthenticated") router.push("/auth/login");
+  }, [router, status]);
 
   return (
     <DashboardLayout head={"Dashboard"}>

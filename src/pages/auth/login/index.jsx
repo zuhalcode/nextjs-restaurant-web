@@ -2,15 +2,15 @@ import Button from "@components/atoms/Button";
 import Input from "@components/atoms/Input";
 import AuthLayout from "@components/auth/templates/AuthLayout";
 import Link from "next/link";
-import { login } from "@store/actions/authAction";
 import { useRouter } from "next/router";
+import { signIn, useSession } from "next-auth/react";
+import Loading from "@components/atoms/Loading";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
 export default function Login() {
-  const dispatch = useDispatch();
   const router = useRouter();
-  const user = useSelector((state) => state.auth.userData);
+  const [loading, setLoading] = useState(false);
+  const { status } = useSession();
 
   const [state, setState] = useState({
     email: "",
@@ -27,12 +27,22 @@ export default function Login() {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
     try {
-      dispatch(login(state.email, state.password));
-      router.replace("/dashboard");
+      setLoading(true);
+      const res = await signIn("credentials", {
+        email: state.email,
+        password: state.password,
+        redirect: false,
+      });
+      if (res.error) console.log("error", res.error);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (status === "authenticated") router.push("/dashboard");
+  }, [router, status]);
 
   return (
     <AuthLayout head="Login Page">
@@ -67,9 +77,13 @@ export default function Login() {
           Forgot Password
         </Link>
 
-        <Button size="sm" className="mx-auto mt-3 w-full">
-          Login
-        </Button>
+        {loading ? (
+          <Loading />
+        ) : (
+          <Button size="sm" className="mx-auto mt-3 w-full">
+            Login
+          </Button>
+        )}
 
         <div className="mx-auto mt-3 flex gap-1 text-center text-sm">
           Don&apos;t have an account ?

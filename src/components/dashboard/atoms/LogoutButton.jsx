@@ -1,22 +1,19 @@
-import { logout } from "@store/slices/authSlice";
+import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { FiLogOut } from "react-icons/fi";
-import { useDispatch } from "react-redux";
 
 export default function LogoutButton() {
-  const dispatch = useDispatch();
-  const router = useRouter();
-  const handleLogout = () => {
-    dispatch(logout());
-    router.push("/auth/login");
+  const handleLogout = (e) => {
+    e.preventDefault();
+    signOut();
   };
+
   return (
-    <li className="flex w-full justify-center">
+    <li className="flex w-full justify-center" onClick={handleLogout}>
       <button className="flex w-[80%] items-center space-x-5 rounded-md py-3 pl-1">
         <FiLogOut />
-        <p className="text-sm uppercase" onClick={handleLogout}>
-          Logout
-        </p>
+        <p className="text-sm uppercase">Logout</p>
       </button>
     </li>
   );
