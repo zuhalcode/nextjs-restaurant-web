@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import HorizontalDivider from "@components/UI/atoms/Divider";
 import { capitalizeFirstLetter } from "@lib/textFunction";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
@@ -40,7 +39,7 @@ const DropdownProfile = () => {
               <p className="">{user.email}</p>
             </div>
           </div>
-          <HorizontalDivider />
+          <hr className="border-b-slate-500" />
           <div
             className="pb-2"
             role="menu"
