@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bg-home-rounded-first-section::before {
+  content: "";
+  @apply absolute -left-64 -top-[12rem] h-[1000px] w-[1000px] rounded-full bg-primary;
+}

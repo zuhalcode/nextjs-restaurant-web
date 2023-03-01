@@ -1,6 +1,6 @@
-import Button from "@components/atoms/Button";
-import Input from "@components/atoms/Input";
-import Loading from "@components/atoms/Loading";
+import Button from "@components/UI/atoms/Button";
+import Input from "@components/UI/atoms/Input";
+import Loading from "@components/UI/atoms/Loading";
 import AuthLayout from "@components/auth/templates/AuthLayout";
 import axiosClient from "@lib/axios";
 import { useSession } from "next-auth/react";

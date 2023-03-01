@@ -2,7 +2,7 @@
 import React from "react";
 import { BsFillStarFill } from "react-icons/bs";
 import { AiOutlineStar } from "react-icons/ai";
-import Button from "@components/atoms/Button";
+import Button from "@components/UI/atoms/Button";
 import DashboardLayout from "@components/dashboard/templates/DashboardLayout";
 
 export default function Page({ params }) {

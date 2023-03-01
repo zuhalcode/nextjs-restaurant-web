@@ -1,5 +1,5 @@
-import Button from "@components/atoms/Button";
-import Input from "@components/atoms/Input";
+import Button from "@components/UI/atoms/Button";
+import Input from "@components/UI/atoms/Input";
 import Head from "next/head";
 import Link from "next/link";
 

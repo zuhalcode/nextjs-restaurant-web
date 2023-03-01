@@ -1,10 +1,10 @@
-import Button from "@components/atoms/Button";
-import Input from "@components/atoms/Input";
+import Button from "@components/UI/atoms/Button";
+import Input from "@components/UI/atoms/Input";
 import AuthLayout from "@components/auth/templates/AuthLayout";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { signIn, useSession } from "next-auth/react";
-import Loading from "@components/atoms/Loading";
+import Loading from "@components/UI/atoms/Loading";
 import { useEffect, useState } from "react";
 
 export default function Login() {

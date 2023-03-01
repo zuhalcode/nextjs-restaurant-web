@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import Button from "@components/atoms/Button";
+import Button from "@components/UI/atoms/Button";
 import { useRouter } from "next/navigation";
 import React from "react";
 import DashboardLayout from "@components/dashboard/templates/DashboardLayout";

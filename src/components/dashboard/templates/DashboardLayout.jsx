@@ -1,5 +1,5 @@
 import Head from "next/head";
-import HeaderInfo from "../atoms/HeaderInfo";
+import HeaderInfo from "../molecules/HeaderInfo";
 import SearchBar from "../atoms/SearchBar";
 import Sidebar from "./DashboardSidebar";
 

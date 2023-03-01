@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import Button from "@components/atoms/Button";
-import Input from "@components/atoms/Input";
+import Button from "@components/UI/atoms/Button";
+import Input from "@components/UI/atoms/Input";
 import DashboardLayout from "@components/dashboard/templates/DashboardLayout";
 import React, { useRef, useState } from "react";
 import { AiFillFileImage } from "react-icons/ai";
