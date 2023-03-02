@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { signIn, useSession } from "next-auth/react";
 import Loading from "@components/UI/atoms/Loading";
 import { useEffect, useState } from "react";
+import Navbar from "@components/UI/organisms/Navbar";
 
 export default function Login() {
   const router = useRouter();
@@ -45,56 +46,59 @@ export default function Login() {
   }, [router, status]);
 
   return (
-    <AuthLayout head="Login Page">
-      <form
-        className="flex flex-col items-center justify-center px-5 pt-24"
-        onSubmit={handleOnSubmit}
-      >
-        <p className="text-2xl font-semibold">Welcome Back</p>
-
-        <Input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={state.email}
-          handleOnChange={handleOnChange}
-          className="mb-1 border-b"
-        />
-
-        <Input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={state.password}
-          handleOnChange={handleOnChange}
-          className="mb-1 border-b"
-        />
-
-        <Link
-          href="/auth/login"
-          className="cursor-pointer self-end text-xs underline underline-offset-2 hover:text-blue-500"
+    <>
+      <Navbar />
+      <AuthLayout head="Login Page">
+        <form
+          className="flex flex-col items-center justify-center px-5 pt-24"
+          onSubmit={handleOnSubmit}
         >
-          Forgot Password
-        </Link>
+          <p className="text-2xl font-semibold">Welcome Back</p>
 
-        {loading ? (
-          <Loading />
-        ) : (
-          <Button size="sm" className="mx-auto mt-3 w-full">
-            Login
-          </Button>
-        )}
+          <Input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={state.email}
+            handleOnChange={handleOnChange}
+            className="mb-1 border-b"
+          />
 
-        <div className="mx-auto mt-3 flex gap-1 text-center text-sm">
-          Don&apos;t have an account ?
+          <Input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={state.password}
+            handleOnChange={handleOnChange}
+            className="mb-1 border-b"
+          />
+
           <Link
-            href="/auth/register"
-            className="cursor-pointer underline underline-offset-2 hover:text-blue-500"
+            href="/auth/login"
+            className="cursor-pointer self-end text-xs underline underline-offset-2 hover:text-blue-500"
           >
-            Register
+            Forgot Password
           </Link>
-        </div>
-      </form>
-    </AuthLayout>
+
+          {loading ? (
+            <Loading />
+          ) : (
+            <Button size="sm" className="mx-auto mt-3 w-full">
+              Login
+            </Button>
+          )}
+
+          <div className="mx-auto mt-3 flex gap-1 text-center text-sm">
+            Don&apos;t have an account ?
+            <Link
+              href="/auth/register"
+              className="cursor-pointer underline underline-offset-2 hover:text-blue-500"
+            >
+              Register
+            </Link>
+          </div>
+        </form>
+      </AuthLayout>
+    </>
   );
 }

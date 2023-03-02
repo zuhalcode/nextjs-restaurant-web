@@ -8,3 +8,25 @@
   content: "";
   @apply absolute -left-64 -top-[12rem] h-[1000px] w-[1000px] rounded-full bg-primary;
 }
+
+.navlink {
+  @apply relative font-semibold capitalize hover:cursor-pointer hover:text-secondary hover:after:scale-x-100;
+}
+
+.navlink::after {
+  content: "";
+  @apply absolute -bottom-[1px] left-0 h-[1.2px] w-full origin-left scale-x-0 transform rounded-md bg-secondary transition duration-200;
+}
+
+.section-contact-us::after {
+  content: "";
+  @apply absolute top-0 h-full w-full bg-accent bg-opacity-70;
+}
+
+h1 {
+  @apply text-3xl font-bold capitalize text-accent;
+}
+
+h3 {
+  @apply text-xl text-secondary;
+}

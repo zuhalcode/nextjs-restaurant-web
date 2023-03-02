@@ -2,6 +2,7 @@ import { sendBadRequest } from "@lib/responseHelper";
 import { connect, disconnect } from "src/lib/mongo";
 import User from "src/models/User";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
@@ -24,7 +25,7 @@ export default async function handler(req, res) {
           "Wrong password, check your password again :)"
         );
 
-      return res.json({ user });
+      return res.json(user);
     } catch (err) {
       console.error(err);
       return res.status(500).json({ message: "Server error" });

@@ -7,6 +7,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import Navbar from "@components/UI/organisms/Navbar";
 
 export default function Register() {
   const [loading, setLoading] = useState(false);
@@ -40,56 +41,59 @@ export default function Register() {
   };
 
   return (
-    <AuthLayout head="Register Page">
-      <form
-        className="flex flex-col items-start justify-start space-y-5 px-5 pt-24"
-        onSubmit={handleOnSubmit}
-      >
-        <p className="text-2xl font-semibold">Create an Account</p>
+    <>
+      <Navbar />
+      <AuthLayout head="Register Page">
+        <form
+          className="flex flex-col items-start justify-start space-y-5 px-5 pt-24"
+          onSubmit={handleOnSubmit}
+        >
+          <p className="text-2xl font-semibold">Create an Account</p>
 
-        <Input
-          name="name"
-          placeholder="Name"
-          value={state.name}
-          handleOnChange={handleOnChange}
-          className="border-b"
-        />
+          <Input
+            name="name"
+            placeholder="Name"
+            value={state.name}
+            handleOnChange={handleOnChange}
+            className="border-b"
+          />
 
-        <Input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={state.email}
-          handleOnChange={handleOnChange}
-          className="border-b"
-        />
+          <Input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={state.email}
+            handleOnChange={handleOnChange}
+            className="border-b"
+          />
 
-        <Input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={state.password}
-          handleOnChange={handleOnChange}
-          className="border-b"
-        />
-        {loading ? (
-          <Loading />
-        ) : (
-          <Button size="sm" className="mx-auto mt-3 w-full">
-            Create Account
-          </Button>
-        )}
+          <Input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={state.password}
+            handleOnChange={handleOnChange}
+            className="border-b"
+          />
+          {loading ? (
+            <Loading />
+          ) : (
+            <Button size="sm" className="mx-auto mt-3 w-full">
+              Create Account
+            </Button>
+          )}
 
-        <div className="mx-auto mt-5 flex gap-1 text-center text-sm">
-          Already have an account ?
-          <Link
-            href="/auth/login"
-            className="cursor-pointer underline underline-offset-2 hover:text-blue-500"
-          >
-            Login
-          </Link>
-        </div>
-      </form>
-    </AuthLayout>
+          <div className="mx-auto mt-5 flex gap-1 text-center text-sm">
+            Already have an account ?
+            <Link
+              href="/auth/login"
+              className="cursor-pointer underline underline-offset-2 hover:text-blue-500"
+            >
+              Login
+            </Link>
+          </div>
+        </form>
+      </AuthLayout>
+    </>
   );
 }

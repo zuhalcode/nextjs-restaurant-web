@@ -15,6 +15,15 @@ module.exports = {
       fontFamily: {
         berkshire: ["Berkshire Swash", "cursive"],
       },
+      animation: {
+        "opacity-bottom-to-top": "opacity-bottom-to-top 1s ease-out infinite",
+      },
+      keyframes: {
+        "opacity-bottom-to-top": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+      },
     },
   },
   plugins: [],

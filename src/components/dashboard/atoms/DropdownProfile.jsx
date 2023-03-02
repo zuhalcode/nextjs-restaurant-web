@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 
 const DropdownProfile = () => {
-  const { data: { user } = {} } = useSession();
+  const { data } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="relative inline-block text-left">
@@ -26,7 +26,7 @@ const DropdownProfile = () => {
 
       {isOpen && (
         <div className="absolute right-0 mt-2 w-72 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5">
-          <div className="mt-2 flex items-center justify-center gap-2">
+          <div className="my-2 flex items-center justify-center gap-2">
             <img
               src="/img/profile.jpg"
               alt=""
@@ -34,9 +34,9 @@ const DropdownProfile = () => {
             />
             <div className="">
               <p className="text-lg font-bold text-black">
-                {capitalizeFirstLetter(user.name)}
+                {capitalizeFirstLetter(data?.user.name)}
               </p>
-              <p className="">{user.email}</p>
+              <p className="">{data?.user.email}</p>
             </div>
           </div>
           <hr className="border-b-slate-500" />

@@ -2,10 +2,7 @@ import axiosClient from "@lib/axios";
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const authOptions = {
-  session: {
-    strategy: "jwt",
-  },
+export default NextAuth({
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -21,23 +18,21 @@ export const authOptions = {
             password,
           });
 
-          const user = res.data.user;
-
-          if (res.status === 200 && user) {
-            return user;
-          } else {
-            return null;
-          }
+          const user = res.data;
+          return user || null;
         } catch (error) {
           throw new Error("Invalid credentials");
         }
       },
     }),
   ],
-  pages: {
-    signIn: "/auth/login",
+  callbacks: {
+    async jwt({ token, user }) {
+      return { ...token, ...user };
+    },
+    async session({ session, token, user }) {
+      session.user = token;
+      return session;
+    },
   },
-  secret: process.env.NEXTAUTH_SECRET,
-};
-
-export default NextAuth(authOptions);
+});
