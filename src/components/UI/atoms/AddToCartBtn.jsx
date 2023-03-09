@@ -14,7 +14,8 @@ const AddToCartBtn = ({ children, btnDefault = true, id }) => {
 
   const handleOnClick = async () => {
     const userId = data?.user._id;
-    dispatch(addToCart(userId, productId));
+    if (userId) dispatch(addToCart(userId, productId));
+    return null;
   };
 
   return (
