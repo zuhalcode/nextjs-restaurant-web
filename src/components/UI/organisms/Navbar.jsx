@@ -14,8 +14,8 @@ const Navbar = () => {
         <ul className="flex w-[60%] items-center justify-around px-2">
           <LinkButton>Home</LinkButton>
           <LinkButton link="/products">Products</LinkButton>
-          <LinkButton link="/about">About</LinkButton>
           <li className="navlink">Contact</li>
+          <LinkButton link="/about">About</LinkButton>
           {status === "unauthenticated" ? (
             <>
               <LinkButton link="/auth/register">Sign Up</LinkButton>
