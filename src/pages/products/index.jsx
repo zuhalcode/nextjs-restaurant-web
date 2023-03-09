@@ -19,7 +19,7 @@ const Products = () => {
   }, [dispatch]);
 
   return (
-    <RootLayout>
+    <RootLayout title="Products">
       <div className="min-h-screen px-10 pt-24 ">
         <div className="flex items-center justify-between font-semibold">
           <p className="text-lg">Showing all results</p>

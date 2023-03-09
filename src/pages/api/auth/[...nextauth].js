@@ -31,6 +31,16 @@ export default NextAuth({
       return { ...token, ...user };
     },
     async session({ session, token, user }) {
+      const now = Date.now();
+      const maxAge = 6 * 60 * 60; // 6 hours in seconds
+      if (session && session.expires) {
+        // check if the session has expired
+        if (now > session.expires) {
+          throw new Error("Session expired");
+        }
+      }
+      // set the session expiration time to 6 hours from now
+      session.expires = now + maxAge * 1000;
       session.user = token;
       return session;
     },

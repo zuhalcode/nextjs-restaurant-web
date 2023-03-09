@@ -4,6 +4,7 @@ export default function AuthLayout({ children, head = "Ecommerce" }) {
   return (
     <>
       <Head>
+        <link rel="icon" href="/ruesto-logo.ico" />
         <title>{head}</title>
       </Head>
       <div className="bg-slate-100 p-8">
