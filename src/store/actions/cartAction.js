@@ -1,10 +1,18 @@
 import axiosClient from "@lib/axios";
 
-import { addItem, clearCart, fetchCartSuccess } from "@store/slices/cartSlice";
+import {
+  addItem,
+  cartStart,
+  cartSuccess,
+  clearCart,
+  fetchCartSuccess,
+} from "@store/slices/cartSlice";
 
 export const fetchCartItems = (userId) => async (dispatch) => {
   try {
     dispatch(clearCart());
+    dispatch(cartStart());
+
     const res = await axiosClient.get(`/api/users/${userId}/cart`);
     const cart = res.data.data;
 
@@ -18,6 +26,7 @@ export const fetchCartItems = (userId) => async (dispatch) => {
       }
       dispatch(fetchCartSuccess(products));
     }
+    dispatch(cartSuccess());
   } catch (error) {
     console.log(error);
   }
@@ -25,6 +34,7 @@ export const fetchCartItems = (userId) => async (dispatch) => {
 
 export const addToCart = (userId, productId) => async (dispatch) => {
   try {
+    dispatch(cartStart());
     const resCart = await axiosClient.post(`/api/users/${userId}/cart/store`, {
       productId,
     });
@@ -36,6 +46,7 @@ export const addToCart = (userId, productId) => async (dispatch) => {
         dispatch(addItem(product));
       }
     }
+    dispatch(cartSuccess());
   } catch (error) {
     console.log(error);
   }
