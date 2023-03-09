@@ -15,7 +15,7 @@ const Navbar = () => {
           <LinkButton>Home</LinkButton>
           <LinkButton link="/products">Products</LinkButton>
           <li className="navlink">About</li>
-          <li className="navlink">Contact</li>
+          <LinkButton link="/contact">Contact</LinkButton>
           {status === "unauthenticated" ? (
             <>
               <LinkButton link="/auth/register">Sign Up</LinkButton>
