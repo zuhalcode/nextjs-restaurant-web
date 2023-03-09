@@ -27,10 +27,11 @@ const LandingPage = () => {
       <div className="col-span-7 bg-secondary">
         <div className="relative right-0 top-16">
           <Image
-            src="/img/salmon/salmon.png"
+            src="/img/products/salmon/salmon.png"
             alt=""
             width={1000}
             height={500}
+            priority
           />
         </div>
       </div>

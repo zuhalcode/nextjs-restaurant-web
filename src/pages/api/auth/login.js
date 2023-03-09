@@ -2,7 +2,6 @@ import { sendBadRequest } from "@lib/responseHelper";
 import { connect, disconnect } from "src/lib/mongo";
 import User from "src/models/User";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {

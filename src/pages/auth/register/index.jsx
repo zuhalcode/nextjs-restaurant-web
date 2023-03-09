@@ -3,7 +3,6 @@ import Input from "@components/UI/atoms/Input";
 import Loading from "@components/UI/atoms/Loading";
 import AuthLayout from "@components/auth/templates/AuthLayout";
 import axiosClient from "@lib/axios";
-import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
@@ -11,7 +10,6 @@ import Navbar from "@components/UI/organisms/Navbar";
 
 export default function Register() {
   const [loading, setLoading] = useState(false);
-  const { status } = useSession();
   const router = useRouter();
 
   const [state, setState] = useState({

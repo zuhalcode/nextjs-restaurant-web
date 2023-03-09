@@ -30,3 +30,13 @@ h1 {
 h3 {
   @apply text-xl text-secondary;
 }
+
+.add-to-cart-btn::after {
+  content: "";
+  @apply absolute -left-[30px] -top-1 h-[1.5px] w-40 -rotate-[25deg] scale-x-0 bg-neutral duration-500;
+}
+
+.add-to-cart-btn::before {
+  content: "";
+  @apply absolute -right-[30px] -bottom-1 h-[1.5px] w-40 -rotate-[24deg] scale-x-0 bg-neutral duration-500;
+}

@@ -7,11 +7,11 @@ const About = () => {
       <div className="grid grid-cols-2 gap-10">
         <div className="mt-20 flex items-center justify-center px-5">
           <Image
-            src="/img/snack/waffle-bg.png"
-            className="h-[400px] w-[400px]"
+            src="/img/products/snack/waffle-bg.png"
             alt=""
             width={400}
             height={400}
+            priority
           />
         </div>
         <div className="mt-24 max-w-sm space-y-5">

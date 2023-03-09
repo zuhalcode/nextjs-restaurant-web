@@ -2,7 +2,7 @@
 const Logo = ({ className = "", mode = "dark", size = "xl" }) => {
   return (
     <div
-      className={`flex w-fit items-center justify-center gap-2 rounded-sm p-3 text-center ${className}`}
+      className={`flex w-fit items-center justify-center rounded-sm p-3 text-center ${className}`}
     >
       <img
         src="/img/ruesto-logo.png"
@@ -12,7 +12,7 @@ const Logo = ({ className = "", mode = "dark", size = "xl" }) => {
       <p
         className={`mt-2 font-berkshire ${
           size === "xl" ? "text-3xl" : "text-xl"
-        } font-bold uppercase tracking-wider ${
+        } font-semibold uppercase tracking-wide ${
           mode === "dark" ? "text-accent" : "text-neutral"
         }`}
       >

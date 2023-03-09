@@ -8,7 +8,7 @@ const LinkButton = ({ children, link = "/" }) => {
     <Link
       href={link}
       className={`navlink  ${
-        router.asPath === link || router.asPath.startsWith("auth")
+        router.asPath.startsWith(`${link}/`) || router.asPath === link
           ? " text-secondary after:scale-x-100"
           : "text-accent"
       }`}

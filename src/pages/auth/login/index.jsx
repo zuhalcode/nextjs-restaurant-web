@@ -42,7 +42,7 @@ export default function Login() {
   };
 
   useEffect(() => {
-    if (status === "authenticated") router.push("/dashboard");
+    if (status === "authenticated") router.push("/");
   }, [router, status]);
 
   return (

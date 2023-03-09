@@ -9,7 +9,7 @@ export default function AuthLayout({ children, head = "Ecommerce" }) {
       <div className="bg-slate-100 p-8">
         <div className="mx-auto grid w-[80%] grid-cols-12">
           <div className="col-span-8 ">
-            <div className="flex h-[550px] w-full items-center bg-[url('/img/burger/burger2.jpg')] bg-cover ">
+            <div className="flex h-[550px] w-full items-center bg-[url('/img/products/burger/burger2.jpg')] bg-cover ">
               <p className="text-center text-4xl font-semibold uppercase text-white">
                 &quot; Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Quaerat nesciunt excepturi voluptates reprehenderit illum minus
