@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Cart = () => {
   const { cartItems, loading, totalPrice } = useSelector((state) => state.cart);
-  // const state = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const { data, status } = useSession();
   const router = useRouter();
@@ -20,7 +19,6 @@ const Cart = () => {
     const userId = data?.user._id;
     dispatch(fetchCartItems(userId));
   }, [data, dispatch, router, status]);
-  console.log(loading);
 
   return (
     <RootLayout title="Cart">
