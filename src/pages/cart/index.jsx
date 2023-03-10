@@ -23,7 +23,7 @@ const Cart = () => {
   return (
     <RootLayout title="Cart">
       <div className="grid min-h-screen grid-cols-12 px-16 pt-24">
-        <div className="col-span-12 px-3">
+        <div className="col-span-9 px-3">
           <h1 className="">cart</h1>
           {!loading ? (
             cartItems?.map((item) => (
