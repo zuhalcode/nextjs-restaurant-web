@@ -47,11 +47,13 @@ const Cart = () => {
                       />
                     </div>
                   </div>
-                  <h2 className="text-accent">{item.name}</h2>
+                  <h2 className=" min-w-[12rem] text-accent">{item.name}</h2>
                 </div>
-                <div className="">{item.quantity}</div>
-                <div className="">{toRupiah(item.price)}</div>
-                <div className="">X</div>
+                <div className="min-w-[2rem] text-center">{item.quantity}</div>
+                <div className="min-w-[12rem] text-center">
+                  {toRupiah(item.price)}
+                </div>
+                <div className="min-w-[2rem] text-center">X</div>
               </div>
             ))
           ) : (
