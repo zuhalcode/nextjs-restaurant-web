@@ -12,6 +12,9 @@ export const cartSlice = createSlice({
   reducers: {
     fetchCartSuccess(state, action) {
       state.cartItems = action.payload;
+      state.totalPrice = state.cartItems.reduce((total, item) => {
+        return total + item.price * item.quantity;
+      }, 0);
     },
 
     addItem: (state, action) => {

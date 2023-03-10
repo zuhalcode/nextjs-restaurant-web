@@ -1,3 +1,4 @@
+import AddToCartBtn from "@components/UI/atoms/AddToCartBtn";
 import Loading from "@components/UI/atoms/Loading";
 import RootLayout from "@components/UI/templates/RootLayout";
 import { toRupiah } from "@lib/textFunction";
@@ -22,9 +23,9 @@ const Cart = () => {
 
   return (
     <RootLayout title="Cart">
-      <div className="grid min-h-screen grid-cols-12 px-16 pt-24">
-        <div className="col-span-9 px-3">
-          <h1 className="">cart</h1>
+      <h1 className="px-16 pt-20">cart</h1>
+      <div className="grid max-h-96 grid-cols-12 gap-10  px-14 py-5">
+        <div className="col-span-8 px-3">
           {!loading ? (
             cartItems?.map((item) => (
               <div
@@ -33,7 +34,7 @@ const Cart = () => {
               >
                 <div className="flex items-center justify-center gap-5 font-semibold capitalize">
                   <div
-                    className={`relative h-[80px] w-[80px] overflow-hidden rounded-full`}
+                    className={`relative h-[50px] w-[50px] overflow-hidden rounded-full`}
                   >
                     <div className="relative h-full w-full">
                       <Image
@@ -61,7 +62,16 @@ const Cart = () => {
             {toRupiah(totalPrice || 0)}
           </p>
         </div>
-        <div className="grid-cols-3"></div>
+        <div className="col-span-4 mt-5 rounded-md text-neutral">
+          <div className="w-full rounded-md bg-accent p-5">
+            <h2 className="text-lg font-bold capitalize">Payment Detail</h2>
+            <hr className="my-3 border-neutral" />
+            <span className="mb-3 flex justify-between">
+              Total Price : <p>{toRupiah(totalPrice)}</p>
+            </span>
+            <AddToCartBtn />
+          </div>
+        </div>
       </div>
     </RootLayout>
   );

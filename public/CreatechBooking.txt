@@ -1,0 +1,140 @@
+1. Requirement Gathering by client
+2. Analisa Requirement untuk dibuatkan solusi digitalnya berbentuk penawaran
+3. Acc Requirement
+4. Desain proses, database, mockup
+5. Acc Desain
+6. Implementasi
+
+Studi kasus : Sistem booking barbershop, dan studio
+
+Analisa Kebutuhan sistem : 
+1. button disabled = udah dipake | ACC
+2. action setelah booking memilih background accessories dll -> click menuju payment -> cetak barcode
+3. Pilih jam, paket, tanggal dan waktu kosong, Harga, add-ons [semisal 3x foto atau pilih layanan] | ACC
+4. Dashboard Admin manajemen product
+5. 1 aplikasi untuk 1 perusahaan
+6. output tiket / Barcode | [ACC]
+7. login pakai akun google | [ACC]
+11. Input jumlah orang 
+
+permasalahan : 
+1. Photo studio dengan sistem booking self service
+2. Fitur bayar langsung di website
+
+proses booking : 
+1. Admin input slot jadwal kosong untuk dibooking sebagai master data
+2. customer masuk dan memilih 
+3. pilih cabang sesuai daerah
+
+flow bisnis serupa -> tixId, youcanbookme
+
+Hasil Analisa :
+
+# HALAMAN USER
+(Register | Login Using Gmail)
+
+1. HOME 
+    [
+        Landing Page => {
+            Navbar => {Logo, Home, (Refund ~ Auth), Login, (Logout ~ Auth)},
+            Cover Image => {Headings | Carousel },
+        },
+        Filtering => {
+            Lokasi, Kategori produk, nama product
+        },
+        List paket = (Image, Name, Category, Location, Price) => {
+            PhotoStudio => 3x Foto, Foto product, foto pernikahan, harga paket
+            Barbershop => Haircut, Grooming, Semir rambut
+            Salon => Pedicure, Facial, Scrubbing        
+            Lapangan => harga per jam, lapangan basket, voli, futsal
+        },
+        About Us => {
+            Deskripsi perusahaan
+        }
+        Button BOOK NOW
+        Footer => {}
+   ]
+
+2. Detail Page by Filtering 
+    [
+        Product Detail => {
+            Heading => Title, Cover
+            Category,
+            Description,
+            Booking button -> redirect 1
+        },
+        (1) Pilih Waktu => {
+            Pilih Tanggal yang tersedia,
+            Filter by tanggal,
+            Tampilkan semua slot jam (button | disabled),
+            Add ons -> redirect 2
+        },
+
+        (2) Review => {
+            Rating,
+            Comments
+        },
+        Add on => {}
+        Rekomendasi => {}
+    ]
+
+3. Payment Page 
+    [
+        List product yang dipilih => {
+            Nama Product,
+            Harga product,
+            Waktu,
+            Add ons
+        },
+        Rincian Biaya => {
+            Total biaya products,
+            Additional price,
+            Total Keseluruhan
+        },
+        Input data pemesan => {
+          Nama, Email, Nomor WA
+        },
+        Button Checkout (Midtrans) => {
+            return file invoice Barcode atau ticket via email / WA
+        }
+    ],
+
+4. Refund Page [
+    (Login Requirement Using gmail)
+    List Product Active => {
+        Nama product, 
+        download ticket,
+        Expires, 
+        price, 
+        request refund
+    }
+] (OPTIONAL)
+
+# HALAMAN ADMIN
+1. Login Requirement => {Email, password}
+
+2. Dashboard => []
+
+3. Home Management => [
+    (Headings | Carousel ) => {
+        Text, Image
+    }, 
+    Logo => Image,
+    Filtering => {
+        Input Lokasi = [Cabang perusahaan] => Text,
+        Kategori Product => Text,
+        Nama Product => Text
+    },
+]
+4. Brands Management => [
+
+]
+
+5. Products Management => [
+    Input Image Product => Image,
+]
+
+6. Orders Management => {
+    Menampilkan data pembelian semua user
+}
+
