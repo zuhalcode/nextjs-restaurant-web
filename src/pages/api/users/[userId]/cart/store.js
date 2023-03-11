@@ -2,13 +2,11 @@ import { connect, disconnect } from "@lib/mongo";
 import { sendConflict, sendOk } from "@lib/responseHelper";
 import Cart from "@model/Cart";
 import Product from "@model/Product";
-import mongoose from "mongoose";
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
     const { userId } = req.query;
     const { productId } = req.body;
-    // const productId = mongoose.Types.ObjectId(req.body.productId);
 
     try {
       await connect();
@@ -24,6 +22,7 @@ export default async function handler(req, res) {
 
       if (existingItem) existingItem.quantity += 1;
       else cart.items.push({ product: product._id });
+      cart.total += product.price;
 
       await cart.save();
       await disconnect();
