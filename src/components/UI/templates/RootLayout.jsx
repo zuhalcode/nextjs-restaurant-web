@@ -10,9 +10,11 @@ const RootLayout = ({ children, title = "Home" }) => {
         <link rel="icon" href="/ruesto-logo.ico" />
         <title>Ruesto | {title}</title>
       </Head>
-      <Navbar />
-      {children}
-      <Footer />
+      <div className="overflow-hidden">
+        <Navbar />
+        {children}
+        <Footer />
+      </div>
     </>
   );
 };

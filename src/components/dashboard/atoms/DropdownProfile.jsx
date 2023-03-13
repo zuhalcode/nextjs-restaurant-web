@@ -1,16 +1,30 @@
 /* eslint-disable @next/next/no-img-element */
 import { capitalizeFirstLetter } from "@lib/textFunction";
-import { useSession } from "next-auth/react";
-import React, { useState } from "react";
+import { clearCart } from "@store/slices/cartSlice";
+import { signOut, useSession } from "next-auth/react";
+import Link from "next/link";
+import { useState } from "react";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { useDispatch } from "react-redux";
 
-const DropdownProfile = () => {
-  const { data } = useSession();
+const DropdownProfile = ({ isAdmin = false }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [rotate, setRotate] = useState(false);
+
+  const { data } = useSession();
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(clearCart());
+    signOut();
+  };
+
+  const handleOnClick = () => setRotate(!rotate);
+
   return (
-    <div className="relative inline-block text-left">
+    <div className="relative inline-block text-left" onClick={handleOnClick}>
       <div
-        className="inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        className={`inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-md  px-4 py-2 text-sm font-semibold text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
         id="options-menu"
         onClick={() => setIsOpen(!isOpen)}
         aria-haspopup="true"
@@ -21,7 +35,11 @@ const DropdownProfile = () => {
           alt=""
           className="w-10 rounded-full text-slate-500"
         />
-        <MdOutlineKeyboardArrowDown className="ml-2 mt-[1px] text-xl text-slate-500" />
+        <MdOutlineKeyboardArrowDown
+          className={`ml-2 mt-[1px] text-xl text-slate-500 duration-500 ${
+            rotate ? "rotate-180 transform" : ""
+          }`}
+        />
       </div>
 
       {isOpen && (
@@ -53,6 +71,24 @@ const DropdownProfile = () => {
             >
               My Profile
             </a>
+            {!isAdmin && (
+              <>
+                <Link
+                  href="/dashboard"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  role="menuitem"
+                >
+                  Dashboard
+                </Link>
+                <button
+                  className="block w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  role="menuitem"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </>
+            )}
           </div>
         </div>
       )}

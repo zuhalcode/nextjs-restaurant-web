@@ -15,7 +15,7 @@ Analisa Kebutuhan sistem :
 5. 1 aplikasi untuk 1 perusahaan
 6. output tiket / Barcode | [ACC]
 7. login pakai akun google | [ACC]
-11. Input jumlah orang 
+8. Input jumlah orang 
 
 permasalahan : 
 1. Photo studio dengan sistem booking self service
@@ -29,53 +29,56 @@ proses booking :
 flow bisnis serupa -> tixId, youcanbookme
 
 Hasil Analisa :
-
 # HALAMAN USER
-(Register | Login Using Gmail)
-
 1. HOME 
     [
         Landing Page => {
             Navbar => {Logo, Home, (Refund ~ Auth), Login, (Logout ~ Auth)},
             Cover Image => {Headings | Carousel },
         },
+
         Filtering => {
             Lokasi, Kategori produk, nama product
         },
+
         List paket = (Image, Name, Category, Location, Price) => {
             PhotoStudio => 3x Foto, Foto product, foto pernikahan, harga paket
             Barbershop => Haircut, Grooming, Semir rambut
             Salon => Pedicure, Facial, Scrubbing        
             Lapangan => harga per jam, lapangan basket, voli, futsal
         },
+
         About Us => {
             Deskripsi perusahaan
+        }, 
+
+        Button BOOK NOW,
+
+        Footer => {
+            Contact,
+            motto, 
+            faq, 
+            privacy policy, 
+            Medsos, 
+            all Right reserved
         }
-        Button BOOK NOW
-        Footer => {}
    ]
 
-2. Detail Page by Filtering 
+2. Detail Page by product clicked
     [
         Product Detail => {
-            Heading => Title, Cover
-            Category,
-            Description,
-            Booking button -> redirect 1
-        },
-        (1) Pilih Waktu => {
-            Pilih Tanggal yang tersedia,
-            Filter by tanggal,
-            Tampilkan semua slot jam (button | disabled),
-            Add ons -> redirect 2
-        },
+            Heading => Title, Cover,
+            Category => Text,
+            Product Description => Text,
+            Booking button -> redirect to Modal
 
-        (2) Review => {
-            Rating,
-            Comments
+            (Modal) => {
+                Pilih Tanggal yang tersedia,
+                Filter by tanggal,
+                Tampilkan semua slot jam (button | disabled untuk slot yang terpakai),
+                Add ons => badge pilihan yang tersedia
+            },
         },
-        Add on => {}
-        Rekomendasi => {}
     ]
 
 3. Payment Page 
@@ -86,55 +89,71 @@ Hasil Analisa :
             Waktu,
             Add ons
         },
+
         Rincian Biaya => {
-            Total biaya products,
-            Additional price,
+            Total biaya product,
+            Biaya tambahan => Biaya admin
             Total Keseluruhan
         },
+
         Input data pemesan => {
           Nama, Email, Nomor WA
         },
+
         Button Checkout (Midtrans) => {
             return file invoice Barcode atau ticket via email / WA
         }
     ],
 
-4. Refund Page [
-    (Login Requirement Using gmail)
-    List Product Active => {
-        Nama product, 
-        download ticket,
-        Expires, 
-        price, 
-        request refund
-    }
-] (OPTIONAL)
-
 # HALAMAN ADMIN
-1. Login Requirement => {Email, password}
+### 
+    Login Required (Email, Password | Login using Gmail) => {
+        if(!user) Register => { Email, password | Register using Gmail }
+    }
+###
 
-2. Dashboard => []
 
-3. Home Management => [
-    (Headings | Carousel ) => {
-        Text, Image
-    }, 
-    Logo => Image,
-    Filtering => {
-        Input Lokasi = [Cabang perusahaan] => Text,
-        Kategori Product => Text,
-        Nama Product => Text
+1. Home Management => [
+    ( Headings | Carousel ) => {
+        Text, Image[quantity]
     },
 ]
-4. Brands Management => [
 
+2. Brands Management => [
+    Input Logo => Image,
+    Input Background cover => Image,   // sebagai background pada saat login atau register
+    Input deskripsi perusahaan => Textarea, 
+    Input deskripsi singkat perusahaan => Text, 
+    Input visi => Text,
+    Input misi => Text,
+    Input Cabang perusahaan => Text,
 ]
 
-5. Products Management => [
-    Input Image Product => Image,
+4. Products Management => [
+    Input Product Image => Image,
+    Input Product Name => Text,
+    Input Product Desc => Text,
+    Input Product Price => Int,
+    Input Add Ons => [
+        Input Name => Text
+        Input Price => Int
+    ] (OPTIONAL),
 ]
 
-6. Orders Management => {
-    Menampilkan data pembelian semua user
+5. Orders Management => [
+    Menampilkan data pembelian semua user,
+    Invoice,
+    Order status => Enum("Belum dibayar", "Dibayar", "Selesai", "Dibatalkan"),
+    Expires => Countdown 24 Jam
+    Created At => Datetime
+    History order button -> Menampilkan semua order yang pernah terjadi
+]
+
+7. Booking management => {
+    Products => Pilih product yg telah diinput,
+    Input slot Tanggal => Date,
+    Input slot waktu => Time
+    Input max pemesan per slot => Int
 }
 
+8. Log out
