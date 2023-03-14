@@ -24,7 +24,7 @@ const DropdownProfile = ({ isAdmin = false }) => {
   return (
     <div className="relative inline-block text-left" onClick={handleOnClick}>
       <div
-        className={`inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-md  px-4 py-2 text-sm font-semibold text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
+        className={`inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
         id="options-menu"
         onClick={() => setIsOpen(!isOpen)}
         aria-haspopup="true"
@@ -36,7 +36,7 @@ const DropdownProfile = ({ isAdmin = false }) => {
           className="w-10 rounded-full text-slate-500"
         />
         <MdOutlineKeyboardArrowDown
-          className={`ml-2 mt-[1px] text-xl text-slate-500 duration-500 ${
+          className={`ml-2 mt-[1px] text-xl text-secondaryD duration-500 ${
             rotate ? "rotate-180 transform" : ""
           }`}
         />
@@ -54,7 +54,7 @@ const DropdownProfile = ({ isAdmin = false }) => {
               <p className="text-lg font-bold text-black">
                 {capitalizeFirstLetter(data?.user.name)}
               </p>
-              <p className="">{data?.user.email}</p>
+              <p className="text-black">{data?.user.email}</p>
             </div>
           </div>
           <hr className="border-b-slate-500" />
