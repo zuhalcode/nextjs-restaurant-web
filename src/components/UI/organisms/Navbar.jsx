@@ -1,4 +1,4 @@
-import LogoutButton from "@components/dashboard/atoms/LogoutButton";
+import DropdownProfile from "@components/dashboard/atoms/DropdownProfile";
 import { signOut, useSession } from "next-auth/react";
 import React from "react";
 import LinkButton from "../atoms/LinkButton";
@@ -16,6 +16,7 @@ const Navbar = () => {
           <LinkButton link="/products">Products</LinkButton>
           <LinkButton link="/contact">Contact</LinkButton>
           <LinkButton link="/about">About</LinkButton>
+
           {status === "unauthenticated" ? (
             <>
               <LinkButton link="/auth/register">Sign Up</LinkButton>
@@ -24,12 +25,7 @@ const Navbar = () => {
           ) : (
             <>
               <LinkButton link="/cart">Cart</LinkButton>
-              <button
-                className={`navlink text-accent`}
-                onClick={() => signOut()}
-              >
-                Logout
-              </button>
+              <DropdownProfile />
             </>
           )}
         </ul>

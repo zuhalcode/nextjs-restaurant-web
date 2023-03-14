@@ -13,9 +13,7 @@ export const getAllProducts = () => async (dispatch) => {
       dispatch(fetchAllProductsSuccess(res.data));
     }
   } catch (e) {
-    // Handle error
-    console.log("gagal goblok, kon iku isok ngoding gak se");
     dispatch(fetchAllProductsFailure(e));
-    console.log(e);
+    console.log(e.message);
   }
 };

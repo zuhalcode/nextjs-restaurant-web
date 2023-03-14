@@ -11,6 +11,11 @@ module.exports = {
         secondary: "#cf2139",
         accent: "#2c2d42",
         neutral: "#fbf9f9",
+
+        "d-primary": "#ffd9b8",
+        "d-secondary": "#422811",
+        "d-accent": "#a7642f",
+        "d-neutral": "#f79420",
       },
       fontFamily: {
         berkshire: ["Berkshire Swash", "cursive"],

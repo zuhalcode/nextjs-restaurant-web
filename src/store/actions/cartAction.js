@@ -6,6 +6,7 @@ import {
   cartSuccess,
   clearCart,
   fetchCartSuccess,
+  removeItem,
 } from "@store/slices/cartSlice";
 
 export const fetchCartItems = (userId) => async (dispatch) => {
@@ -46,7 +47,20 @@ export const addToCart = (userId, productId) => async (dispatch) => {
         dispatch(addItem(product));
       }
     }
+    dispatch(fetchCartItems(userId));
     dispatch(cartSuccess());
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const removeItemFromCart = (userId, productId) => async (dispatch) => {
+  try {
+    const res = await axiosClient.delete(
+      `/api/users/${userId}/cart/${productId}/delete`
+    );
+    if (res.status === 200) dispatch(removeItem(productId));
+    dispatch(fetchCartItems(userId));
   } catch (error) {
     console.log(error);
   }

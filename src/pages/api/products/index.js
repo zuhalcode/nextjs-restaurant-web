@@ -10,8 +10,8 @@ export default async function handler(req, res) {
       await disconnect();
       return sendOk(res, products);
     } catch (error) {
-      console.error(error);
-      return sendBadRequest(res, 500, "Internal server error");
+      console.error(error.message);
+      return sendBadRequest(res, 500, error.message);
     }
   }
 
