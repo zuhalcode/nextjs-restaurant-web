@@ -1,3 +1,4 @@
+import Loading from "@components/UI/atoms/Loading";
 import ProductImage from "@components/UI/atoms/ProductImage";
 import { toRupiah } from "@lib/textFunction";
 import { fetchCartItems, removeItemFromCart } from "@store/actions/cartAction";
@@ -10,7 +11,7 @@ import { BsTrashFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 
 const SideCart = () => {
-  const { cartItems, totalPrice } = useSelector((state) => state.cart);
+  const { cartItems, totalPrice, loading } = useSelector((state) => state.cart);
   const [isOpen, setIsOpen] = useState(true);
 
   const dispatch = useDispatch();
@@ -34,7 +35,9 @@ const SideCart = () => {
         }`}
       >
         <h2 className="mb-4 text-xl font-bold">Cart</h2>
-        {cartItems?.length > 0 ? (
+        {loading ? (
+          <Loading />
+        ) : cartItems?.length > 0 ? (
           <ul className="side-cart max-h-[400px] space-y-5 overflow-y-auto">
             {cartItems.map((item) => (
               <li
@@ -61,7 +64,7 @@ const SideCart = () => {
             ))}
           </ul>
         ) : (
-          <p>Your cart is empty.</p>
+          !loading && cartItems === 0 && <p>Your cart is empty.</p>
         )}
         <p className="mt-4 text-right font-bold">
           Total: {toRupiah(totalPrice)}

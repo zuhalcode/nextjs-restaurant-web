@@ -1,9 +1,7 @@
 // import axiosClient from "@lib/axios";
 import { addToCart } from "@store/actions/cartAction";
-import { setLoading } from "@store/slices/cartSlice";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "./Loading";
 
