@@ -11,11 +11,11 @@ export default function DashboardLayout({ children, head = "Eccommerce" }) {
       </Head>
       <Sidebar />
       <div className="col-span-10 flex flex-col pb-10">
-        <header className="flex w-full justify-between border-b py-3">
+        <header className="flex w-full justify-between border-b bg-d-primary py-3">
           <SearchBar />
           <HeaderInfo />
         </header>
-        <div className="min-h-screen w-full bg-slate-100 p-5">{children}</div>
+        <div className=" w-full bg-neutral p-5">{children}</div>
       </div>
       {/* <div className="col-span-3 bg-red-500">Activity</div> */}
     </div>

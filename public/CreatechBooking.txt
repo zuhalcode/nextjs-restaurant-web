@@ -70,18 +70,27 @@ Hasil Analisa :
             Heading => Title, Cover,
             Category => Text,
             Product Description => Text,
-            Booking button -> redirect to Modal
+            Pilih slot Tanggal yang tersedia,
+            Filter by tanggal,
+            Tampilkan semua slot jam (button | disabled untuk slot yang terpakai),
+            Add ons => badge pilihan yang tersedia
 
-            (Modal) => {
-                Pilih Tanggal yang tersedia,
-                Filter by tanggal,
-                Tampilkan semua slot jam (button | disabled untuk slot yang terpakai),
-                Add ons => badge pilihan yang tersedia
-            },
+            Booking button -> redirect to Order detail
         },
     ]
 
-3. Payment Page 
+
+Proses transaksi dari detail klik tombol booking > (ACC)
+masuk halaman order booking (pilih slot, pilih addon, isi data) > 
+masuk halaman pembayaran, review semua data yang diinputkan sebelumnya, boleh tampilannya dalam bentuk invoice ada tombol bayar untuk memunculkan modal midtrans.
+
+3. Order detail page [
+    
+
+    Button Bayar (Midtrans) => Modal
+]
+
+4. Payment Page 
     [
         List product yang dipilih => {
             Nama Product,
@@ -113,20 +122,31 @@ Hasil Analisa :
 ###
 
 
-1. Home Management => [
+1. Landing Page Management => [
     ( Headings | Carousel ) => {
         Text, Image[quantity]
     },
+
+    Input About => Text,
+
+    Input Contact => {
+        input socmed,
+        input no telp,
+        input email
+    }
 ]
 
-2. Brands Management => [
+2. Branch Management => [
     Input Logo => Image,
     Input Background cover => Image,   // sebagai background pada saat login atau register
     Input deskripsi perusahaan => Textarea, 
     Input deskripsi singkat perusahaan => Text, 
     Input visi => Text,
     Input misi => Text,
-    Input Cabang perusahaan => Text,
+    Input Cabang perusahaan => [
+        Alamat => Text,
+        contact => Text,
+    ],
 ]
 
 4. Products Management => [
