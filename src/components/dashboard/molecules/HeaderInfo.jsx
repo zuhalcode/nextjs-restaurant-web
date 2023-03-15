@@ -7,15 +7,15 @@ export default function HeaderInfo() {
   return (
     <div className="mx-5 flex space-x-5">
       <ul className="flex items-center gap-3">
-        <li className="text-xl text-slate-500">
+        <li className="text-xl text-d-secondary">
           <FiSettings />
         </li>
-        <li className="text-xl text-slate-500">
+        <li className="text-xl text-d-secondary">
           <BiBell />
         </li>
       </ul>
-      <div className="border-r-2 border-slate-400" />
-      <div className="flex items-center justify-center gap-2 text-slate-500">
+      <div className="border-r-2 border-d-secondary" />
+      <div className="flex items-center justify-center gap-2 text-d-secondary">
         <div className="relative inline-block text-left">
           <DropdownProfile />
         </div>

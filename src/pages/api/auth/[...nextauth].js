@@ -21,7 +21,7 @@ export default NextAuth({
           const user = res.data;
           return user || null;
         } catch (error) {
-          throw new Error("Invalid credentials");
+          throw new Error(error.message);
         }
       },
     }),

@@ -32,3 +32,8 @@ export const timeAgo = (date) => {
     return `${years} year${years > 1 ? "s" : ""} ago`;
   }
 };
+
+export const formatDate = (timestamp) =>
+  `${new Date(timestamp).toLocaleDateString()},${new Date(
+    timestamp
+  ).toLocaleTimeString()}`;

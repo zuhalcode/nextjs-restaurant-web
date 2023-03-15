@@ -4,6 +4,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f0f4f8;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6a6a6a;
+  border-radius: 2px;
+}
+
+/* Hover styles */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #a0aec0;
+}
+
+.side-cart::-webkit-scrollbar {
+  width: 0;
+}
+
 .bg-home-rounded-first-section::before {
   content: "";
   @apply absolute -left-64 -top-[12rem] h-[1000px] w-[1000px] rounded-full bg-primary;

@@ -13,7 +13,7 @@ const Logo = ({ className = "", mode = "dark", size = "xl" }) => {
         className={`mt-2 font-berkshire ${
           size === "xl" ? "text-3xl" : "text-xl"
         } font-semibold uppercase tracking-wide ${
-          mode === "dark" ? "text-accent" : "text-neutral"
+          mode === "dark" ? "text-accent" : "text-secondaryD"
         }`}
       >
         Ruesto

@@ -9,6 +9,7 @@ import { toRupiah, toTitleCase } from "@lib/textFunction";
 import { getAllProducts } from "@store/actions/productAction";
 import { BsChevronDown } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
+import SideCart from "@components/products/organism/SideCart";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ const Products = () => {
 
   return (
     <RootLayout title="Products">
-      <div className="min-h-screen px-10 pt-24 ">
+      <div className="relative min-h-screen px-10 pt-24">
         <div className="flex items-center justify-between font-semibold">
           <p className="text-lg">Showing all results</p>
           <div className="flex items-center justify-center gap-10 border-b-2 border-accent  px-3 pb-2 font-semibold">
@@ -39,7 +40,7 @@ const Products = () => {
                 className="group cursor-pointer space-y-2 duration-300 hover:-translate-y-4"
               >
                 <div className="group relative h-[350px] w-[350px] overflow-hidden rounded-md">
-                  <ProductImage product={product} width={350} />
+                  <ProductImage src={product.image} width={350} />
                   <AddToCartBtn btnDefault={false} id={product._id} />
                 </div>
 
@@ -61,6 +62,10 @@ const Products = () => {
           )}
         </div>
         {/* End Products */}
+
+        {/* Cart Side */}
+        <SideCart />
+        {/* End Cart Side */}
       </div>
     </RootLayout>
   );

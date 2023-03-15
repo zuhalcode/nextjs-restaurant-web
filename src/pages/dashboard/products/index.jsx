@@ -19,7 +19,7 @@ export default function Products() {
       <div className="grid grid-cols-4 gap-3">
         {products.map((id) => (
           <div key={id} className="rounded-b-sm bg-white pb-3">
-            <img src="/img/burger/burger.jpg" alt="" />
+            <img src="/img/products/burger/burger.jpg" alt="" />
             <p className="my-2 text-center text-xl font-bold uppercase">
               Beef Cheese Burger
             </p>

@@ -1,0 +1,182 @@
+1. Requirement Gathering by client
+2. Analisa Requirement untuk dibuatkan solusi digitalnya berbentuk penawaran
+3. Acc Requirement
+4. Desain proses, database, mockup
+5. Acc Desain
+6. Implementasi
+
+Studi kasus : Sistem booking barbershop, dan studio
+
+Analisa Kebutuhan sistem : 
+1. button disabled = udah dipake | ACC
+2. action setelah booking memilih background accessories dll -> click menuju payment -> cetak barcode
+3. Pilih jam, paket, tanggal dan waktu kosong, Harga, add-ons [semisal 3x foto atau pilih layanan] | ACC
+4. Dashboard Admin manajemen product
+5. 1 aplikasi untuk 1 perusahaan
+6. output tiket / Barcode | [ACC]
+7. login pakai akun google | [ACC]
+8. Input jumlah orang 
+
+permasalahan : 
+1. Photo studio dengan sistem booking self service
+2. Fitur bayar langsung di website
+
+proses booking : 
+1. Admin input slot jadwal kosong untuk dibooking sebagai master data
+2. customer masuk dan memilih 
+3. pilih cabang sesuai daerah
+
+flow bisnis serupa -> tixId, youcanbookme
+
+Hasil Analisa :
+# HALAMAN USER
+1. HOME 
+    [
+        Landing Page => {
+            Navbar => {Logo, Home, (Refund ~ Auth), Login, (Logout ~ Auth)},
+            Cover Image => {Headings | Carousel },
+        },
+
+        Filtering => {
+            Lokasi, Kategori produk, nama product
+        },
+
+        List paket = (Image, Name, Category, Location, Price) => {
+            PhotoStudio => 3x Foto, Foto product, foto pernikahan, harga paket
+            Barbershop => Haircut, Grooming, Semir rambut
+            Salon => Pedicure, Facial, Scrubbing        
+            Lapangan => harga per jam, lapangan basket, voli, futsal
+        },
+
+        About Us => {
+            Deskripsi perusahaan
+        }, 
+
+        Button BOOK NOW,
+
+        Footer => {
+            Contact,
+            motto, 
+            faq, 
+            privacy policy, 
+            Medsos, 
+            all Right reserved
+        }
+   ]
+
+2. Detail Page by product clicked
+    [
+        Product Detail => {
+            Heading => Title, Cover,
+            Category => Text,
+            Product Description => Text,
+            Pilih slot Tanggal yang tersedia,
+            Filter by tanggal,
+            Tampilkan semua slot jam (button | disabled untuk slot yang terpakai),
+            Add ons => badge pilihan yang tersedia
+
+            Booking button -> redirect to Order detail
+        },
+    ]
+
+3. Order detail page (Invoice) [
+    invoice Id => Int,
+    invoice date => date,
+    user name => text,
+    product detail => { product name, price},
+    branch address => text,
+    add ons => { name, price }
+    additional price => { name, price }
+    Total price => int
+
+    Button Bayar (Midtrans) => Modal
+    Button Cancel
+]
+
+4. Payment Page 
+    [
+        List product yang dipilih => {
+            Nama Product,
+            Harga product,
+            Waktu,
+            Add ons
+        },
+
+        Rincian Biaya => {
+            Total biaya product,
+            Biaya tambahan => Biaya admin
+            Total Keseluruhan
+        },
+
+        Input data pemesan => {
+          Nama, Email, Nomor WA
+        },
+
+        Button Checkout (Midtrans) => {
+            return file invoice Barcode atau ticket via email / WA
+        }
+    ],
+
+# HALAMAN ADMIN
+### 
+    Login Required (Email, Password | Login using Gmail) => {
+        if(!user) Register => { Email, password | Register using Gmail }
+    }
+###
+
+
+1. Landing Page Management => [
+    ( Headings | Carousel ) => {
+        Text, Image[quantity]
+    },
+
+    Input About => Text,
+
+    Input Contact => {
+        input socmed,
+        input no telp,
+        input email
+    }
+]
+
+2. Branch Management => [
+    Input Logo => Image,
+    Input Background cover => Image,   // sebagai background pada saat login atau register
+    Input deskripsi perusahaan => Textarea, 
+    Input deskripsi singkat perusahaan => Text, 
+    Input visi => Text,
+    Input misi => Text,
+    Input Cabang perusahaan => [
+        Alamat => Text,
+        contact => Text,
+    ],
+]
+
+4. Products Management => [
+    Input Product Image => Image,
+    Input Product Name => Text,
+    Input Product Desc => Text,
+    Input Product Price => Int,
+    Input Add Ons => [
+        Input Name => Text
+        Input Price => Int
+    ] (OPTIONAL),
+]
+
+5. Orders Management => [
+    Menampilkan data pembelian semua user,
+    Invoice,
+    Order status => Enum("Belum dibayar", "Dibayar", "Selesai", "Dibatalkan"),
+    Expires => Countdown 24 Jam
+    Created At => Datetime
+    History order button -> Menampilkan semua order yang pernah terjadi
+]
+
+7. Booking management => {
+    Products => Pilih product yg telah diinput,
+    Input slot Tanggal => Date,
+    Input slot waktu => Time
+    Input max pemesan per slot => Int
+}
+
+8. Log out

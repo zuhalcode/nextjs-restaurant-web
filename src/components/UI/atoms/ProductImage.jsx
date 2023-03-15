@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const ProductImage = ({ product = {}, width = 500, circle = false }) => {
+const ProductImage = ({ src = "", width = 500, circle = false }) => {
   return (
     <div
       className={`relative overflow-hidden ${
@@ -10,7 +10,7 @@ const ProductImage = ({ product = {}, width = 500, circle = false }) => {
     >
       <div className="relative h-full w-full">
         <Image
-          src={product.image || "/img/ss.png"}
+          src={src || "/img/ss.png"}
           alt=""
           fill // menempatkan gambar ke dalam kotak
           style={{ objectFit: "cover" }} // memotong gambar agar pas di dalam kotak
