@@ -79,15 +79,18 @@ Hasil Analisa :
         },
     ]
 
-
-Proses transaksi dari detail klik tombol booking > (ACC)
-masuk halaman order booking (pilih slot, pilih addon, isi data) > 
-masuk halaman pembayaran, review semua data yang diinputkan sebelumnya, boleh tampilannya dalam bentuk invoice ada tombol bayar untuk memunculkan modal midtrans.
-
-3. Order detail page [
-    
+3. Order detail page (Invoice) [
+    invoice Id => Int,
+    invoice date => date,
+    user name => text,
+    product detail => { product name, price},
+    branch address => text,
+    add ons => { name, price }
+    additional price => { name, price }
+    Total price => int
 
     Button Bayar (Midtrans) => Modal
+    Button Cancel
 ]
 
 4. Payment Page 
