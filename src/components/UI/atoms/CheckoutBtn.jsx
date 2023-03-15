@@ -1,7 +1,8 @@
 import axiosClient from "@lib/axios";
+import Toast from "@lib/toast";
 import { fetchCartItems } from "@store/actions/cartAction";
 import { useDispatch } from "react-redux";
-import Swal from "sweetalert2";
+import Loading from "./Loading";
 
 const CheckoutBtn = ({ cartItems, userId, loading, totalPrice }) => {
   const dispatch = useDispatch();
@@ -13,22 +14,7 @@ const CheckoutBtn = ({ cartItems, userId, loading, totalPrice }) => {
         total: totalPrice,
       });
 
-      const Toast = Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 1000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-          toast.addEventListener("mouseenter", Swal.stopTimer);
-          toast.addEventListener("mouseleave", Swal.resumeTimer);
-        },
-      });
-
-      Toast.fire({
-        icon: "success",
-        title: res.data.message,
-      });
+      Toast({ type: "success", message: res.data.message });
 
       dispatch(fetchCartItems());
     } catch (error) {
@@ -42,7 +28,7 @@ const CheckoutBtn = ({ cartItems, userId, loading, totalPrice }) => {
       className="w-full rounded-sm bg-neutral py-2 font-semibold uppercase text-accent duration-100 hover:border hover:border-neutral hover:bg-accent hover:text-neutral"
       onClick={handleOnCheckout}
     >
-      Checkout
+      {loading ? <Loading className="mt-0" /> : "Checkout"}
     </button>
   );
 };
