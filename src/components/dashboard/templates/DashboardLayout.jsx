@@ -7,7 +7,8 @@ export default function DashboardLayout({ children, head = "Eccommerce" }) {
   return (
     <div className="grid grid-cols-12">
       <Head>
-        <title>{head}</title>
+        <link rel="icon" href="/ruesto-logo.ico" />
+        <title>Dashboard | {head}</title>
       </Head>
       <Sidebar />
       <div className="col-span-10 flex flex-col pb-10">
