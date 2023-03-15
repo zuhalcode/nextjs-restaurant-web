@@ -1,19 +1,19 @@
 import midtransClient from "@lib/midtrans";
 
 export default async function handler(req, res) {
-  const { orderId, grossAmount, firstName, lastName, email, phone } = req.body;
+  const { orderId, amount, firstName, lastName, email, phone } = req.body;
 
   try {
     const transactionDetails = {
       order_id: orderId,
-      gross_amount: grossAmount,
+      gross_amount: amount,
     };
 
     const customerDetails = {
       first_name: firstName,
       last_name: lastName,
-      email: email,
-      phone: phone,
+      email,
+      phone,
     };
 
     const parameter = {
