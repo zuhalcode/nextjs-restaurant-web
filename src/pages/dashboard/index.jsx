@@ -8,12 +8,6 @@ import { useSession } from "next-auth/react";
 
 export default function Dashboard() {
   const menu = ["", "", "", ""];
-  const router = useRouter();
-  const { status } = useSession();
-
-  useEffect(() => {
-    if (status === "unauthenticated") router.push("/auth/login");
-  }, [router, status]);
 
   return (
     <DashboardLayout head={"Dashboard"}>

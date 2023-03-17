@@ -1,22 +1,43 @@
 import DropdownProfile from "@components/dashboard/atoms/DropdownProfile";
-import { signOut, useSession } from "next-auth/react";
-import React from "react";
+import { useSession } from "next-auth/react";
+import React, { useState } from "react";
+import { AiOutlineMenu } from "react-icons/ai";
+import { RxCross2 } from "react-icons/rx";
 import LinkButton from "../atoms/LinkButton";
 import Logo from "../atoms/Logo";
 
 const Navbar = () => {
   const { status } = useSession();
+  const [navOpen, setNavOpen] = useState(true);
+  const handleOnClick = () => setNavOpen(!navOpen);
 
   return (
     <>
-      <div className="fixed z-20 flex w-full justify-between bg-white bg-opacity-95 px-10 shadow-sm">
+      <div className="fixed z-30 flex w-full justify-between bg-white shadow-sm  sm:bg-opacity-95 sm:px-10">
         <Logo />
-        <ul className="flex w-[60%] items-center justify-around px-2">
+        {!navOpen ? (
+          <AiOutlineMenu
+            className="absolute right-0 top-5 cursor-pointer text-4xl text-accent sm:hidden"
+            onClick={handleOnClick}
+          />
+        ) : (
+          <RxCross2
+            className="absolute right-0 top-5 cursor-pointer text-4xl text-accent sm:hidden"
+            onClick={handleOnClick}
+          />
+        )}
+
+        <ul
+          className={`
+          absolute right-0 -z-30 flex w-full flex-col items-center justify-around gap-2 bg-white px-2 transition-all duration-500
+          sm:static sm:w-[60%] sm:flex-row sm:gap-0 sm:bg-none ${
+            navOpen ? "top-[4.8rem] opacity-100" : "-top-32 opacity-0"
+          }`}
+        >
           <LinkButton>Home</LinkButton>
           <LinkButton link="/products">Products</LinkButton>
           <LinkButton link="/contact">Contact</LinkButton>
           <LinkButton link="/about">About</LinkButton>
-
           {status === "unauthenticated" ? (
             <>
               <LinkButton link="/auth/register">Sign Up</LinkButton>

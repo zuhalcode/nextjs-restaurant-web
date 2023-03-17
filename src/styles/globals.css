@@ -33,7 +33,7 @@
 }
 
 .navlink {
-  @apply relative font-semibold capitalize hover:cursor-pointer hover:text-secondary hover:after:scale-x-100;
+  @apply relative font-semibold capitalize hover:cursor-pointer hover:text-secondary sm:hover:after:scale-x-100;
 }
 
 .navlink::after {

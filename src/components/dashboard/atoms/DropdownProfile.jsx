@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { capitalizeFirstLetter } from "@lib/textFunction";
+import { capitalizeFirstLetter, toTitleCase } from "@lib/textFunction";
 import { clearCart } from "@store/slices/cartSlice";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
@@ -22,7 +22,10 @@ const DropdownProfile = ({ isAdmin = false }) => {
   const handleOnClick = () => setRotate(!rotate);
 
   return (
-    <div className="relative inline-block text-left" onClick={handleOnClick}>
+    <div
+      className="relative hidden text-left sm:inline-block"
+      onClick={handleOnClick}
+    >
       <div
         className={`inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
         id="options-menu"
@@ -36,7 +39,7 @@ const DropdownProfile = ({ isAdmin = false }) => {
           className="w-10 rounded-full text-slate-500"
         />
         <MdOutlineKeyboardArrowDown
-          className={`ml-2 mt-[1px] text-xl text-secondaryD duration-500 ${
+          className={`text-secondaryD ml-2 mt-[1px] text-xl duration-500 ${
             rotate ? "rotate-180 transform" : ""
           }`}
         />
@@ -52,7 +55,7 @@ const DropdownProfile = ({ isAdmin = false }) => {
             />
             <div className="">
               <p className="text-lg font-bold text-black">
-                {capitalizeFirstLetter(data?.user.name)}
+                {toTitleCase(data?.user.name)}
               </p>
               <p className="text-black">{data?.user.email}</p>
             </div>

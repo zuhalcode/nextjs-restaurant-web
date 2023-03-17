@@ -5,13 +5,13 @@ import React from "react";
 const LinkButton = ({ children, link = "/" }) => {
   const router = useRouter();
   return (
-    <li>
+    <li className="group w-full cursor-pointer py-3 text-center hover:bg-slate-400 hover:bg-none sm:p-0 sm:hover:bg-transparent">
       <Link
         href={link}
         className={`navlink ${
           router.asPath.startsWith(`${link}/`) || router.asPath === link
-            ? " text-secondary after:scale-x-100"
-            : "text-accent"
+            ? "sm:text-secondary sm:after:scale-x-100"
+            : "group-hover:text-white sm:text-accent sm:hover:text-accent"
         }`}
       >
         {children}

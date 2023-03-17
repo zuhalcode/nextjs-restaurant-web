@@ -5,11 +5,10 @@ const Logo = ({ className = "", mode = "dark", size = "xl" }) => {
   return (
     <Link href="/">
       <div
-        className={`flex w-fit items-center justify-center rounded-sm p-3 text-center ${className}`}
+        className={`flex w-fit items-center justify-center rounded-sm px-3 py-2 text-center sm:p-3 ${className}`}
       >
         <Image
           src="/img/ruesto-logo.png"
-          // className={`${size === "xl" ? "h-14 w-12" : "h-10 w-8"}`}
           alt=""
           width={size === "xl" ? 48 : 32}
           height={size === "xl" ? 56 : 40}
