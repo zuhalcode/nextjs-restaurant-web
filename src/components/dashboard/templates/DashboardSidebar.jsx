@@ -23,7 +23,7 @@ export default function Sidebar() {
   return (
     <div className="col-span-2 min-h-screen border-r border-r-neutral bg-d-primary">
       <Logo className="mx-auto" mode="light" />
-      <ul className="mt-5 flex flex-col items-center justify-center space-y-2">
+      <ul className="mt-0 flex flex-col items-center justify-center space-y-2">
         {isAdmin
           ? adminMenu.map((menu, index) => (
               <SidebarLink menu={menu} key={index}>

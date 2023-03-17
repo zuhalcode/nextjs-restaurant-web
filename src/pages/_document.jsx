@@ -10,6 +10,7 @@ export default function Document() {
           src="https://app.sandbox.midtrans.com/snap/snap.js"
           data-client-key={process.env.MIDTRANS_CLIENT_KEY}
         />
+        <link rel="manifest" href="/manifest.json" />
       </Head>
 
       <body>

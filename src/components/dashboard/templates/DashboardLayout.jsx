@@ -11,14 +11,13 @@ export default function DashboardLayout({ children, head = "Eccommerce" }) {
         <title>Dashboard | {head}</title>
       </Head>
       <Sidebar />
-      <div className="col-span-10 flex flex-col pb-10">
+      <div className="col-span-10 flex flex-col">
         <header className="flex w-full justify-between border-b bg-d-primary py-3">
           <SearchBar />
           <HeaderInfo />
         </header>
-        <div className=" w-full bg-neutral p-5">{children}</div>
+        <div className="min-h-[535px] w-full bg-neutral p-5">{children}</div>
       </div>
-      {/* <div className="col-span-3 bg-red-500">Activity</div> */}
     </div>
   );
 }

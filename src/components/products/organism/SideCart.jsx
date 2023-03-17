@@ -69,12 +69,13 @@ const SideCart = () => {
         <p className="mt-4 text-right font-bold">
           Total: {toRupiah(totalPrice)}
         </p>
-        <button
+
+        <span
           className="fixed -left-[3.3rem] top-24 z-20 cursor-pointer rounded-l-full bg-accent py-3 px-3 text-neutral shadow-lg outline-none "
           onClick={() => setIsOpen(!isOpen)}
         >
           <AiOutlineShoppingCart className="text-3xl" />
-        </button>
+        </span>
         <Link href="/cart">
           <button className="my-5 w-full rounded-sm border border-accent bg-neutral py-2 font-semibold uppercase text-accent duration-100 hover:border hover:border-neutral hover:bg-accent hover:text-neutral">
             Go to Cart
