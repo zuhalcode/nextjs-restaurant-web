@@ -2,8 +2,18 @@ import Head from "next/head";
 import HeaderInfo from "../molecules/HeaderInfo";
 import SearchBar from "../atoms/SearchBar";
 import Sidebar from "./DashboardSidebar";
+import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
+import { useEffect } from "react";
 
 export default function DashboardLayout({ children, head = "Eccommerce" }) {
+  const router = useRouter();
+  const { status } = useSession();
+
+  useEffect(() => {
+    if (status === "unauthenticated") router.push("/auth/login");
+  }, [router, status]);
+
   return (
     <div className="grid grid-cols-12">
       <Head>

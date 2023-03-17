@@ -72,9 +72,7 @@ const OrderDetail = () => {
           /* You may add your own implementation here */
           const resOrder = await axiosClient.put(
             `/api/order/${orderId}/update`,
-            {
-              status: "processing",
-            }
+            { status: "processing" }
           );
 
           const resPayment = await axiosClient.post(
