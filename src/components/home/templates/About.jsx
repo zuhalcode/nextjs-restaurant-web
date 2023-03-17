@@ -4,8 +4,8 @@ import React from "react";
 const About = () => {
   return (
     <div className="relative z-10 flex max-h-fit items-center justify-center bg-neutral pb-10">
-      <div className="grid grid-cols-2 gap-10">
-        <div className="mt-20 flex items-center justify-center px-5">
+      <div className="grid gap-10 sm:grid-cols-2">
+        <div className="mt-20 hidden items-center justify-center px-5 sm:flex">
           <Image
             src="/img/products/snack/waffle-bg.png"
             alt=""
@@ -14,7 +14,7 @@ const About = () => {
             priority
           />
         </div>
-        <div className="mt-24 max-w-sm space-y-5">
+        <div className="mt-5 space-y-5 p-10 text-center sm:mt-24 sm:max-w-sm sm:p-0 sm:text-left ">
           <h3>About Us</h3>
           <h1 className="text-4xl font-bold capitalize text-accent">
             the best enjoyable place around you

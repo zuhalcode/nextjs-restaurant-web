@@ -51,7 +51,7 @@ h1 {
 }
 
 h3 {
-  @apply text-xl text-secondary;
+  @apply text-center text-xl text-secondary sm:text-left;
 }
 
 .add-to-cart-btn::after {

@@ -17,12 +17,12 @@ const Navbar = () => {
         <Logo />
         {!navOpen ? (
           <AiOutlineMenu
-            className="absolute right-0 top-5 cursor-pointer text-4xl text-accent sm:hidden"
+            className="absolute right-0 top-5 mx-5 cursor-pointer text-4xl text-accent sm:m-0 sm:hidden"
             onClick={handleOnClick}
           />
         ) : (
           <RxCross2
-            className="absolute right-0 top-5 cursor-pointer text-4xl text-accent sm:hidden"
+            className="absolute right-0 top-5 mx-5 cursor-pointer text-4xl text-accent sm:m-0 sm:hidden"
             onClick={handleOnClick}
           />
         )}

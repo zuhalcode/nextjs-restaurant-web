@@ -3,9 +3,9 @@ import React from "react";
 
 const LandingPage = () => {
   return (
-    <div className="grid min-h-screen grid-cols-12">
+    <div className="grid min-h-screen sm:grid-cols-12">
       <div className="bg-home-rounded-first-section relative col-span-5 flex items-center justify-end">
-        <div className="relative z-10 w-[80%] space-y-8">
+        <div className="relative z-10 space-y-8 p-10 sm:w-[80%] sm:p-0">
           <h1 className="text-5xl font-bold uppercase text-accent">
             our best healthy food
           </h1>
@@ -24,7 +24,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-      <div className="col-span-7 bg-secondary">
+      <div className="col-span-7 hidden bg-secondary sm:block">
         <div className="relative right-0 top-16">
           <Image
             src="/img/products/salmon/salmon.png"
