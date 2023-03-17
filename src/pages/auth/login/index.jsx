@@ -35,6 +35,7 @@ export default function Login() {
         redirect: false,
       });
       if (res.error) console.log("error", res.error);
+
       setLoading(false);
     } catch (error) {
       console.log(error);

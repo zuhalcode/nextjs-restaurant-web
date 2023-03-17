@@ -73,14 +73,11 @@ const Orders = () => {
                     </div>
                   </td>
                   <td className="whitespace-nowrap px-6 py-4 capitalize">
-                    <Badge status="success">{order.status}</Badge>
+                    <Badge orderStatus={order.status}>{order.status}</Badge>
                   </td>
                   <td className="space-x-2 whitespace-nowrap px-6 py-4">
-                    <Badge status="primary" button>
+                    <Badge status="primary" button orderId={order._id}>
                       Details
-                    </Badge>
-                    <Badge button payment order={order}>
-                      Pay
                     </Badge>
                   </td>
                 </tr>
