@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
 import { useEffect } from "react";
 
-export default function DashboardLayout({ children, head = "Eccommerce" }) {
+export default function DashboardLayout({ children, title = "Ruesto" }) {
   const router = useRouter();
   const { status } = useSession();
 
@@ -18,7 +18,7 @@ export default function DashboardLayout({ children, head = "Eccommerce" }) {
     <div className="grid grid-cols-12">
       <Head>
         <link rel="icon" href="/ruesto-logo.ico" />
-        <title>Dashboard | {head}</title>
+        <title>Dashboard | {title}</title>
       </Head>
       <Sidebar />
       <div className="col-span-10 flex flex-col">

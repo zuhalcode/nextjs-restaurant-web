@@ -38,7 +38,7 @@ const Orders = () => {
   }, [data, isAdmin, userId]);
 
   return (
-    <DashboardLayout>
+    <DashboardLayout title="Orders">
       <div className="relative flex max-h-[520px] min-w-full flex-col overflow-y-auto border-b border-d-accent align-middle shadow sm:rounded-sm">
         <table className="min-w-full divide-y divide-d-accent">
           <thead className="bg-d-accent">

@@ -7,6 +7,8 @@ import { toRupiah, toTitleCase } from "@lib/textFunction";
 import Image from "next/image";
 import Link from "next/link";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { RxCross2 } from "react-icons/rx";
+import CornerDeleteX from "@components/UI/atoms/CornerDeleteX";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -26,7 +28,7 @@ export default function Products() {
   }, []);
 
   return (
-    <DashboardLayout head="Products">
+    <DashboardLayout title="Products">
       <Link
         href="/dashboard/products/create"
         target="_blank"
@@ -59,7 +61,8 @@ export default function Products() {
         ) : (
           products.map((product) => (
             <div key={product._id} className="rounded-b-sm bg-white pb-3">
-              <div className={`relative h-52 w-full overflow-hidden`}>
+              <div className={`group relative h-52 w-full overflow-hidden`}>
+                <CornerDeleteX productId={product._id} />
                 <div className="relative h-full w-full">
                   <Image
                     src={`${product.image}` || "/img/ss.png"}
