@@ -2,6 +2,7 @@ import AddToCartBtn from "@components/UI/atoms/AddToCartBtn";
 import ProductImage from "@components/UI/atoms/ProductImage";
 import ProductSkeleton from "@components/UI/atoms/Skeleton/ProductSkeleton";
 import RootLayout from "@components/UI/templates/RootLayout";
+import SideCart from "@components/products/organism/SideCart";
 import Link from "next/link";
 
 import { useEffect } from "react";
@@ -9,7 +10,6 @@ import { toRupiah, toTitleCase } from "@lib/textFunction";
 import { getAllProducts } from "@store/actions/productAction";
 import { BsChevronDown } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import SideCart from "@components/products/organism/SideCart";
 
 const Products = () => {
   const dispatch = useDispatch();

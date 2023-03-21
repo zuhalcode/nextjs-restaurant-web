@@ -8,12 +8,13 @@ import Logo from "../atoms/Logo";
 
 const Navbar = () => {
   const { status } = useSession();
-  const [navOpen, setNavOpen] = useState(true);
+  const [navOpen, setNavOpen] = useState(false);
+
   const handleOnClick = () => setNavOpen(!navOpen);
 
   return (
     <>
-      <div className="fixed z-30 flex w-full justify-between bg-white shadow-sm  sm:bg-opacity-95 sm:px-10">
+      <div className="fixed z-30 flex w-full justify-between bg-white shadow-sm sm:bg-opacity-90 sm:px-10">
         <Logo />
         {!navOpen ? (
           <AiOutlineMenu
@@ -29,9 +30,11 @@ const Navbar = () => {
 
         <ul
           className={`
-          absolute right-0 -z-30 flex w-full flex-col items-center justify-around gap-2 bg-white px-2 transition-all duration-500
-          sm:static sm:w-[60%] sm:flex-row sm:gap-0 sm:bg-none ${
-            navOpen ? "top-[4.8rem] opacity-100" : "-top-32 opacity-0"
+          absolute right-0 -z-30 flex w-full flex-col items-center justify-around gap-2 bg-white px-2 transition-all duration-500 sm:static
+          sm:w-[60%] sm:flex-row sm:gap-0 sm:bg-transparent sm:bg-none ${
+            navOpen
+              ? "top-[4.8rem] opacity-100"
+              : "-top-32 opacity-0 sm:opacity-100"
           }`}
         >
           <LinkButton>Home</LinkButton>

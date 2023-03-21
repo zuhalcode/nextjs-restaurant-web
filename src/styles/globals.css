@@ -38,7 +38,7 @@
 
 .navlink::after {
   content: "";
-  @apply absolute -bottom-[1px] left-0 h-[1.2px] w-full origin-left scale-x-0 transform rounded-md bg-secondary transition duration-200;
+  @apply absolute -bottom-[1px] left-0 h-[1.5px] w-full origin-left scale-x-0 transform rounded-md bg-secondary transition duration-200;
 }
 
 .section-contact-us::after {

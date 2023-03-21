@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 
 const ProductDetail = () => {
   const router = useRouter();
@@ -29,14 +28,14 @@ const ProductDetail = () => {
       }
     };
     fetchProduct();
-  }, [router.query.id]);
+  }, [router]);
 
   return (
     <RootLayout>
       <div className="mt-20 grid min-h-screen grid-cols-2 bg-neutral p-10">
         {product ? (
           <>
-            <ProductImage product={product} width={550} />
+            <ProductImage src={product.image} width={550} />
             <div className="space-y-5">
               <div className="space-y-2">
                 <h1 className="text-4xl tracking-wide">{product.name}</h1>

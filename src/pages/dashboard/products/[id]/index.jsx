@@ -1,11 +1,24 @@
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsFillStarFill } from "react-icons/bs";
 import { AiOutlineStar } from "react-icons/ai";
 import Button from "@components/UI/atoms/Button";
 import DashboardLayout from "@components/dashboard/templates/DashboardLayout";
+import axiosClient from "@lib/axios";
+import { useRouter } from "next/router";
 
-export default function Page({ params }) {
+export default function Page() {
+  const [product, setProduct] = useState(null);
+  const router = useRouter();
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await axiosClient.get(`/api/products`);
+      setProduct(res.data.data);
+    };
+    fetchProducts();
+  }, []);
+  console.log(product);
+
   return (
     <DashboardLayout>
       <div className="grid grid-cols-2 gap-5">

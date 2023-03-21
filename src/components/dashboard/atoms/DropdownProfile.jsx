@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { capitalizeFirstLetter, toTitleCase } from "@lib/textFunction";
+import { toTitleCase } from "@lib/textFunction";
 import { clearCart } from "@store/slices/cartSlice";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
@@ -23,26 +23,25 @@ const DropdownProfile = ({ isAdmin = false }) => {
 
   return (
     <div
-      className="relative hidden text-left sm:inline-block"
+      className="relative z-20 hidden text-left sm:inline-block"
       onClick={handleOnClick}
     >
       <div
-        className={`inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
+        className={`inline-flex w-full cursor-pointer items-center justify-center rounded-md px-4 py-2 text-sm font-semibold text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
         id="options-menu"
         onClick={() => setIsOpen(!isOpen)}
         aria-haspopup="true"
         aria-expanded="true"
       >
-        <img
-          src="/img/profile.jpg"
-          alt=""
-          className="w-10 rounded-full text-slate-500"
-        />
-        <MdOutlineKeyboardArrowDown
-          className={`text-secondaryD ml-2 mt-[1px] text-xl duration-500 ${
-            rotate ? "rotate-180 transform" : ""
-          }`}
-        />
+        <img src="/img/profile.jpg" alt="" className="w-10 rounded-full" />
+
+        <div className="">
+          <MdOutlineKeyboardArrowDown
+            className={` ml-2 mt-[1px] text-xl duration-500 ${
+              rotate ? "rotate-180 transform" : ""
+            }`}
+          />
+        </div>
       </div>
 
       {isOpen && (

@@ -11,7 +11,7 @@ const LinkButton = ({ children, link = "/" }) => {
         className={`navlink ${
           router.asPath.startsWith(`${link}/`) || router.asPath === link
             ? "sm:text-secondary sm:after:scale-x-100"
-            : "group-hover:text-white sm:text-accent sm:hover:text-accent"
+            : "group-hover:text-white sm:text-accent sm:hover:text-accent sm:group-hover:text-accent"
         }`}
       >
         {children}

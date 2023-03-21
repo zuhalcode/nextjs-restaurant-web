@@ -1,22 +1,25 @@
-/* eslint-disable @next/next/no-img-element */
-"use client";
 import Button from "@components/UI/atoms/Button";
 import Input from "@components/UI/atoms/Input";
 import DashboardLayout from "@components/dashboard/templates/DashboardLayout";
 import React, { useRef, useState } from "react";
 import { AiFillFileImage } from "react-icons/ai";
 import { MdCloudUpload } from "react-icons/md";
+import Image from "next/image";
+import axiosClient from "@lib/axios";
+import Toast from "@lib/toast";
+import Loading from "@components/UI/atoms/Loading";
 
 export default function AddProduct() {
   const imageRef = useRef(null);
   const [image, setImage] = useState(null);
   const [filename, setFilename] = useState("No Selected File");
+  const [loading, setLoading] = useState(false);
 
   const [data, setData] = useState({
     name: "",
-    price: "",
+    category: "",
     desc: "",
-    filename: "",
+    price: "",
   });
 
   const handleOnChange = (e) => {
@@ -28,9 +31,39 @@ export default function AddProduct() {
         });
   };
 
-  const handleOnSubmit = (e) => {
+  const handleOnSubmit = async (e) => {
     e.preventDefault();
-    console.log(data);
+    setLoading(true);
+    const formData = new FormData();
+    formData.append("name", data.name.toLowerCase());
+    formData.append("category", data.category.toLowerCase());
+    formData.append("price", data.price);
+    formData.append("desc", data.desc.toLowerCase());
+    formData.append("image", imageRef.current.files[0]);
+
+    try {
+      const { data } = await axiosClient.post(
+        "/api/products/create",
+        formData,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
+
+      Toast({ type: "success", timer: 2000, message: data.message })
+        .then(() => {
+          setData({
+            name: "",
+            category: "",
+            desc: "",
+            price: "",
+          });
+          setImage(null);
+          setFilename("No Selected File");
+          setLoading(false);
+        })
+        .catch((err) => console.log(err));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -53,6 +86,13 @@ export default function AddProduct() {
             handleOnChange={handleOnChange}
           />
 
+          <Input
+            name="category"
+            placeholder="Category"
+            value={data.category}
+            handleOnChange={handleOnChange}
+          />
+
           <div
             className="flex h-1/2 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-dashed border-blue-500"
             onClick={() => imageRef.current.click()}
@@ -65,13 +105,21 @@ export default function AddProduct() {
               accept="image/*"
               hidden
               onChange={({ target: { files } }) => {
-                files[0] && setFilename(files[0].name);
-                if (files) setImage(URL.createObjectURL(files[0]));
+                if (files) {
+                  setImage(URL.createObjectURL(files[0]));
+                  setFilename(files[0].name);
+                }
               }}
             />
 
             {image ? (
-              <img src={image} className="h-[80%] w-[80%]" alt="" />
+              <Image
+                width="80"
+                height="80"
+                src={image}
+                className="h-[80%] w-[80%]"
+                alt=""
+              />
             ) : (
               <>
                 <MdCloudUpload className="text-7xl text-blue-500" />
@@ -84,10 +132,15 @@ export default function AddProduct() {
             <AiFillFileImage className="text-lg text-blue-500" />
             <p className="text-sm">{filename}</p>
           </section>
-
-          <Button size="sm" className="mt-3">
-            Add Product
-          </Button>
+          {loading ? (
+            <div className="w-1/3 ">
+              <Loading />
+            </div>
+          ) : (
+            <Button size="sm" className="mt-3">
+              Add Product
+            </Button>
+          )}
         </div>
 
         <div>

@@ -8,7 +8,7 @@ const Footer = () => {
     <footer className="section-contact-us relative flex flex-col items-center justify-center bg-[url('/img/bg-food-2.jpg')] bg-cover bg-center">
       <div className="relative z-10 mx-auto grid w-[80%] grid-cols-4 items-center justify-center gap-5 p-10 ">
         <div className="">
-          <Logo mode="white" className="-ml-3" size="md" />
+          <Logo mode="light" className="-ml-3" size="md" />
           <p className="text-sm text-neutral">
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             Laudantium, delectus porro! Totam dolores aut voluptatem fugiat

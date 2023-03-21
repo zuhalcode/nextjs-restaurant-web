@@ -1,7 +1,7 @@
 import ProfilePic from "@components/UI/atoms/ProfilePic";
+
 import { timeAgo } from "@lib/dateFunction";
 import { capitalizeFirstLetter } from "@lib/textFunction";
-import React from "react";
 import { AiFillStar } from "react-icons/ai";
 
 const Testimonial = () => {
@@ -35,10 +35,10 @@ const Testimonial = () => {
   return (
     <div className="relative z-10 flex max-h-fit flex-col items-center justify-center space-y-5 bg-neutral py-10">
       <h3>Testimonial</h3>
-      <h5 className="text-4xl font-bold capitalize text-accent">
+      <h5 className="text-center text-2xl font-bold capitalize text-accent sm:text-left sm:text-4xl">
         what are our customers saying
       </h5>
-      <p className="max-w-lg pb-5 text-center text-base">
+      <p className="max-w-lg px-5 pb-5 text-center text-base sm:px-0">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Est at quod
         rerum ab saepe eum. Quod vitae natus sunt ipsam.
       </p>

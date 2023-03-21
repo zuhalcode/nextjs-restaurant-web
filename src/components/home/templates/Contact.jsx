@@ -4,7 +4,7 @@ const Contact = () => {
   return (
     <div className="section-contact-us relative flex items-center justify-center bg-[url('/img/bg-food.jpg')] bg-cover bg-center sm:p-10">
       <div className="relative z-10 mx-auto flex flex-col items-center justify-center gap-5 p-10 text-neutral sm:w-[60%]">
-        <h2 className="text-3xl font-bold capitalize sm:text-4xl">
+        <h2 className="text-center text-2xl font-bold capitalize sm:text-left sm:text-4xl">
           do not miss the test!
         </h2>
         <p className="text-center">
