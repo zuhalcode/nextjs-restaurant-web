@@ -12,17 +12,17 @@ import { toRupiah, toTitleCase } from "@lib/textFunction";
 export default function Page() {
   const [product, setProduct] = useState(null);
   const router = useRouter();
+  const productId = router.query.id;
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const productId = router.query.id;
       if (productId) {
         const { data } = await axiosClient.get(`/api/products/${productId}`);
         setProduct(data.data);
       }
     };
     fetchProducts();
-  }, [router]);
+  }, [productId, router]);
 
   return (
     <DashboardLayout>
@@ -56,7 +56,14 @@ export default function Page() {
             <p className="text-xl font-semibold text-slate-500">Price</p>
             <p className="text-xl font-bold">{toRupiah(product?.price)}</p>
           </div>
-          <Button className="w-full">Edit Product</Button>
+          <Button
+            className="w-full"
+            handleOnClick={() =>
+              router.push(`/dashboard/products/${productId}/edit`)
+            }
+          >
+            Edit Product
+          </Button>
         </div>
       </div>
     </DashboardLayout>

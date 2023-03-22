@@ -8,7 +8,7 @@ const CornerDeleteX = ({ productId }) => {
   const handleOnClick = async () => {
     Swal.fire({
       title: "Are you sure?",
-      text: "You are about to cancel this payment.",
+      text: "You are about to delete this product.",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -16,15 +16,13 @@ const CornerDeleteX = ({ productId }) => {
       confirmButtonText: "Yes",
     }).then((res) => {
       if (res.isConfirmed) {
-        axiosClient
-          .delete(`/api/products/${productId}/delete`)
-          .then((res) =>
-            Toast({
-              type: "success",
-              message: res.data.message,
-              timer: 1500,
-            }).then(() => location.reload())
-          );
+        axiosClient.delete(`/api/products/${productId}/delete`).then((res) =>
+          Toast({
+            type: "success",
+            message: res.data.message,
+            timer: 1500,
+          }).then(() => location.reload())
+        );
       }
     });
   };
