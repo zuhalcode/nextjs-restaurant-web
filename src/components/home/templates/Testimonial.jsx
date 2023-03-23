@@ -17,17 +17,6 @@ const Testimonial = () => {
           culpa. Quaerat laboriosam minus deserunt. Earum soluta nisi non.`,
       rating: 4,
     },
-    {
-      name: "jasmin",
-      date: new Date("2022-12-22T08:29:13.662+00:00"),
-      comment: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Delectus, reprehenderit? Deserunt, debitis laborum rerum odit
-          doloribus perspiciatis temporibus beatae, placeat dignissimos
-          vitae veritatis magni. Voluptates voluptate quis eius, optio et
-          ipsa ducimus facilis a magnam! Tempora ipsa iure, eum quasi quos
-          culpa. Quaerat laboriosam minus deserunt. Earum soluta nisi non.`,
-      rating: 2,
-    },
   ];
 
   const maxRate = 5;
@@ -42,11 +31,11 @@ const Testimonial = () => {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Est at quod
         rerum ab saepe eum. Quod vitae natus sunt ipsam.
       </p>
-      <div className="mx-auto grid grid-cols-2 gap-2">
+      <div className="mx-auto px-3">
         {data.map(({ name, date, rating, comment }, index) => (
           <div
             key={index}
-            className="w-[400px] rounded-md bg-white pb-3 shadow-md"
+            className="w-full rounded-md bg-white pb-3 shadow-md sm:w-[400px]"
           >
             <div className="flex gap-4 px-4 py-3">
               <ProfilePic />

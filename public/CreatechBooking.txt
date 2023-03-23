@@ -6,16 +6,7 @@
 6. Implementasi
 
 Studi kasus : Sistem booking barbershop, dan studio
-
-Analisa Kebutuhan sistem : 
-1. button disabled = udah dipake | ACC
-2. action setelah booking memilih background accessories dll -> click menuju payment -> cetak barcode
-3. Pilih jam, paket, tanggal dan waktu kosong, Harga, add-ons [semisal 3x foto atau pilih layanan] | ACC
-4. Dashboard Admin manajemen product
-5. 1 aplikasi untuk 1 perusahaan
-6. output tiket / Barcode | [ACC]
-7. login pakai akun google | [ACC]
-8. Input jumlah orang 
+flow bisnis serupa -> tixId, youcanbookme
 
 permasalahan : 
 1. Photo studio dengan sistem booking self service
@@ -26,7 +17,36 @@ proses booking :
 2. customer masuk dan memilih 
 3. pilih cabang sesuai daerah
 
-flow bisnis serupa -> tixId, youcanbookme
+Analisa Kebutuhan sistem : 
+1. button disabled = udah dipake | ACC
+2. action setelah booking memilih background accessories dll -> click menuju payment -> cetak barcode | ACC
+3. Pilih jam, paket, tanggal dan waktu kosong, Harga, add-ons [semisal 3x foto atau pilih layanan] | ACC
+4. Dashboard Admin manajemen product
+5. 1 aplikasi untuk 1 perusahaan
+6. output tiket / Barcode | [ACC]
+7. login pakai akun google | [ACC]
+8. Input jumlah orang | ACC
+
+Analisa Kebutuhan sistem REVISI I : 
+1. Input data order jika belum login => create akun baru (ACC)
+2. dibawah detail order saat mengisi data user ada pilihan input data atau login (ACC) 
+3. Order admin tambahkan action terima / tolak order (ACC)
+4. landing page pakai submenu -> tentang perushaan, heading / carousel (ACC)
+5. hapus visi misi branch management (ACC)
+6. branch management dijadikan sub menu landingpage management (ACC)
+7. product management tambah input nama cabang (ACC)
+8. Booking management merge ke product management (ACC)
+
+
+invoice dari email berupa link dan tambahkan deskripsi singkat tentang berhasil atau gagal ordernya
+
+buat sistem kasir dengan fitur yang sama untuk transaksi secara offline output => booking order, struk (sistem serupa indomaret bayar token)
+untuk OTS fitur tersendiri tanpa Login
+struk sekali pakai
+
+Role : Admin Perusahaan, Admin Cabang, Customer (dibuat secara statis)
+
+landing page memilih cabang dulu setelah itu list produk
 
 Hasil Analisa :
 # HALAMAN USER
@@ -82,12 +102,16 @@ Hasil Analisa :
 3. Order detail page (Invoice) [
     invoice Id => Int,
     invoice date => date,
-    user name => text,
     product detail => { product name, price},
     branch address => text,
     add ons => { name, price }
     additional price => { name, price }
     Total price => int
+
+    Input data customer atau login => ( login? ) => {
+        if(user) => auto generate data customer 
+        else => generate akun baru dari data yang diinput
+    }
 
     Button Bayar (Midtrans) => Modal
     Button Cancel
@@ -126,30 +150,34 @@ Hasil Analisa :
 
 
 1. Landing Page Management => [
-    ( Headings | Carousel ) => {
+    Submenu Tentang perusahaan => {
+        Input About Us => Text,
+
+        Input Contact => {
+            input socmed,
+            input no telp,
+            input email
+        }
+    }
+
+    Submenu Headings | Carousel => {
         Text, Image[quantity]
     },
 
-    Input About => Text,
-
-    Input Contact => {
-        input socmed,
-        input no telp,
-        input email
-    }
+    Submenu Branch management => {
+        Input Logo => Image,
+        Input Background cover => Image,   // sebagai background pada saat login atau register
+        Input deskripsi perusahaan => Textarea, 
+        Input deskripsi singkat perusahaan => Text,
+        Input Cabang perusahaan => [
+            Alamat => Text,
+            contact => Text,
+        ],
+    } 
 ]
 
 2. Branch Management => [
-    Input Logo => Image,
-    Input Background cover => Image,   // sebagai background pada saat login atau register
-    Input deskripsi perusahaan => Textarea, 
-    Input deskripsi singkat perusahaan => Text, 
-    Input visi => Text,
-    Input misi => Text,
-    Input Cabang perusahaan => [
-        Alamat => Text,
-        contact => Text,
-    ],
+    
 ]
 
 4. Products Management => [

@@ -19,17 +19,17 @@ const DropdownProfile = ({ isAdmin = false }) => {
     signOut();
   };
 
-  const handleOnClick = () => setRotate(!rotate);
+  const handleOnClick = () => {
+    setRotate(!rotate);
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <div
-      className="relative z-20 hidden text-left sm:inline-block"
-      onClick={handleOnClick}
-    >
+    <div className="relative z-20 hidden text-left sm:inline-block">
       <div
         className={`inline-flex w-full cursor-pointer items-center justify-center rounded-md px-4 py-2 text-sm font-semibold text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
         id="options-menu"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={handleOnClick}
         aria-haspopup="true"
         aria-expanded="true"
       >
