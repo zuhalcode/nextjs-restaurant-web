@@ -52,7 +52,7 @@ const Products = () => {
                     {toRupiah(product.price)}
                   </p>
                   <Link href={`/products/${product._id}`}>
-                    <button className="w-[80%] rounded-sm border bg-secondary font-bold text-neutral opacity-100 duration-300 hover:border-secondary hover:bg-white hover:text-secondary group-hover:translate-y-0 group-hover:opacity-100 sm:w-full sm:-translate-y-5 sm:py-3 sm:opacity-0">
+                    <button className="w-[80%] rounded-sm border bg-secondary text-sm font-bold text-neutral opacity-100 duration-300 hover:border-secondary hover:bg-white hover:text-secondary group-hover:translate-y-0 group-hover:opacity-100 sm:w-full sm:-translate-y-5 sm:py-3 sm:text-base sm:opacity-0">
                       Show Detail
                     </button>
                   </Link>

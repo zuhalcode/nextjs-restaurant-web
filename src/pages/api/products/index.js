@@ -1,5 +1,9 @@
 import { connect, disconnect } from "@lib/mongo";
-import { sendBadRequest, sendOk } from "@lib/responseHelper";
+import {
+  sendBadRequest,
+  sendInternalServerError,
+  sendOk,
+} from "@lib/responseHelper";
 import Product from "@model/Product";
 
 export default async function handler(req, res) {
@@ -14,6 +18,5 @@ export default async function handler(req, res) {
       return sendBadRequest(res, 500, error);
     }
   }
-
   return sendInternalServerError(res);
 }

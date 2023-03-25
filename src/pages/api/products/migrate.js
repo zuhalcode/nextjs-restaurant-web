@@ -39,13 +39,13 @@ export default async function handler(req, res) {
         name: "Margherita Pizza",
         price: 24000,
         desc: `Our classic Margherita pizza is a crowd-pleaser, made with fresh tomato sauce, mozzarella cheese, and fresh basil. This pizza is a perfect choice for those who love simple yet delicious flavors`,
-        image: "/images/products/pizza/pizza 3.jpg",
+        image: "/images/products/pizza/pizza3.jpg",
       },
       {
         name: "Pepperoni Pizza",
         price: 56000,
         desc: `Our spicy pepperoni pizza is a perfect choice for those who love a little heat in their meal. Made with a generous amount of pepperoni, fresh tomato sauce, and mozzarella cheese, this pizza is a favorite among meat lovers`,
-        image: "/images/products/pizza/pizza 4.jpg",
+        image: "/images/products/pizza/pizza4.jpg",
       },
       {
         name: "BBQ Chicken Pizza",
