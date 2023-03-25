@@ -29,9 +29,8 @@ const Navbar = () => {
         )}
 
         <ul
-          className={`
-          absolute right-0 -z-30 flex w-full flex-col items-center justify-around gap-2 bg-white px-2 transition-all duration-500 sm:static
-          sm:w-[60%] sm:flex-row sm:gap-0 sm:bg-transparent sm:bg-none ${
+          className={`absolute right-0 -z-30 flex w-full flex-col items-center justify-around gap-2 bg-white px-2 pb-3 transition-all duration-500 sm:static sm:w-[60%]
+          sm:flex-row sm:gap-0 sm:bg-transparent sm:bg-none sm:pb-0 ${
             navOpen
               ? "top-[4.8rem] opacity-100"
               : "-top-32 opacity-0 sm:opacity-100"
