@@ -8,6 +8,7 @@ import {
 export const getAllProducts = () => async (dispatch) => {
   try {
     dispatch(fetchAllProductsStart());
+    dispatch(fetchAllProductsSuccess([]));
     const res = await axiosClient.get("/api/products");
     if (res.status === 200) {
       dispatch(fetchAllProductsSuccess(res.data));
