@@ -1,12 +1,19 @@
 import Image from "next/image";
 
-const ProductImage = ({ src = "", width = 500, circle = false }) => {
+const ProductImage = ({
+  src = "",
+  width = 500,
+  circle = false,
+  isSmScreen,
+}) => {
+  const imageWidth = isSmScreen ? 100 : width;
+
   return (
     <div
       className={`relative overflow-hidden ${
         circle ? "rounded-full" : "rounded-md"
       }`}
-      style={{ height: width, width: width }}
+      style={{ height: imageWidth, width: imageWidth }}
     >
       <div className="relative h-full w-full">
         <Image

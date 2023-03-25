@@ -176,22 +176,22 @@ Hasil Analisa :
     } 
 ]
 
-2. Branch Management => [
-    
-]
-
-4. Products Management => [
+2. Products Management => [
     Input Product Image => Image,
     Input Product Name => Text,
     Input Product Desc => Text,
     Input Product Price => Int,
+    Input slot Tanggal => Date,
+    Input slot waktu => Time
+    Input max pemesan per slot => Int
+
     Input Add Ons => [
         Input Name => Text
         Input Price => Int
     ] (OPTIONAL),
 ]
 
-5. Orders Management => [
+3. Orders Management => [
     Menampilkan data pembelian semua user,
     Invoice,
     Order status => Enum("Belum dibayar", "Dibayar", "Selesai", "Dibatalkan"),
@@ -199,12 +199,5 @@ Hasil Analisa :
     Created At => Datetime
     History order button -> Menampilkan semua order yang pernah terjadi
 ]
-
-7. Booking management => {
-    Products => Pilih product yg telah diinput,
-    Input slot Tanggal => Date,
-    Input slot waktu => Time
-    Input max pemesan per slot => Int
-}
 
 8. Log out

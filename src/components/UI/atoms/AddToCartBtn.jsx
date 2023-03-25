@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import Loading from "./Loading";
 
-const AddToCartBtn = ({ children, btnDefault = true, id }) => {
+const AddToCartBtn = ({ children, btnDefault = true, id, isSmScreen }) => {
   const router = useRouter();
   const productId = router.query.id || id;
 
@@ -34,20 +34,14 @@ const AddToCartBtn = ({ children, btnDefault = true, id }) => {
           )}
         </>
       ) : (
-        <div className="group absolute top-10 left-10 mx-auto flex h-0 w-[270px] translate-y-0 skew-x-0 items-center justify-center bg-black bg-opacity-80 duration-500 group-hover:h-[270px]">
+        <div className="group absolute top-10 left-10 mx-auto flex h-0 w-full translate-y-0 skew-x-0 items-center justify-center bg-black bg-opacity-80 duration-500 sm:w-[270px] sm:group-hover:h-[270px]">
           {loading ? (
             <>
-              <span className="relative h-12 w-12 animate-spin overflow-hidden rounded-full border-t-2 border-b-2 border-neutral opacity-0 transition-all duration-100 group-hover:opacity-100"></span>
-              {/* <div
-                className="add-to-cart-btn relative translate-y-40 overflow-hidden border border-neutral px-4 py-3 uppercase tracking-widest text-neutral opacity-0 duration-300 hover:before:scale-x-100 hover:after:scale-x-100 group-hover:translate-y-0 group-hover:opacity-100 group-hover:duration-500"
-                onClick={handleOnClick}
-              >
-                Add to cart
-              </div> */}
+              <span className="relative hidden h-12 w-12 animate-spin overflow-hidden rounded-full border-t-2 border-b-2 border-neutral opacity-0 transition-all duration-100 group-hover:opacity-100 sm:inline"></span>
             </>
           ) : (
             <div
-              className="add-to-cart-btn relative translate-y-40 overflow-hidden border border-neutral px-4 py-3 uppercase tracking-widest text-neutral opacity-0 duration-300 hover:before:scale-x-100 hover:after:scale-x-100 group-hover:translate-y-0 group-hover:opacity-100"
+              className={`add-to-cart-btn relative hidden translate-y-40 overflow-hidden border border-neutral px-4 py-3 uppercase tracking-widest text-neutral opacity-0 duration-300 hover:before:scale-x-100 hover:after:scale-x-100 group-hover:translate-y-0 group-hover:opacity-100 sm:block`}
               onClick={handleOnClick}
             >
               Add to cart

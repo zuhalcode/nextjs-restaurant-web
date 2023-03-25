@@ -30,29 +30,29 @@ const Products = () => {
         </div>
 
         {/* Products */}
-        <div className="grid grid-cols-3 justify-items-center pt-16 pb-10">
+        <div className="grid grid-cols-2 justify-items-center pt-16 pb-10 sm:grid-cols-3">
           {loading ? (
             <ProductSkeleton counts={3} />
           ) : (
             products.data?.map((product) => (
               <div
                 key={product._id}
-                className="group cursor-pointer space-y-2 duration-300 hover:-translate-y-4"
+                className="sm:group cursor-pointer duration-300 sm:space-y-2 sm:hover:-translate-y-4"
               >
-                <div className="group relative h-[350px] w-[350px] overflow-hidden rounded-md">
-                  <ProductImage src={product.image} width={350} />
+                <div className="sm:group relative h-[100px] w-full overflow-hidden rounded-md sm:h-[350px] sm:w-[350px]">
+                  <ProductImage src={product.image} width={350} isSmScreen />
                   <AddToCartBtn btnDefault={false} id={product._id} />
                 </div>
 
                 <div>
-                  <p className="text-2xl font-bold">
+                  <p className="text-base font-bold sm:text-2xl">
                     {toTitleCase(product.name)}
                   </p>
                   <p className="pb-3 text-lg text-accent">
                     {toRupiah(product.price)}
                   </p>
                   <Link href={`/products/${product._id}`}>
-                    <button className="w-full -translate-y-5 rounded-sm border bg-secondary py-3 font-bold text-neutral opacity-0 duration-300 hover:border-secondary hover:bg-white hover:text-secondary group-hover:translate-y-0 group-hover:opacity-100">
+                    <button className="w-[80%] rounded-sm border bg-secondary font-bold text-neutral opacity-100 duration-300 hover:border-secondary hover:bg-white hover:text-secondary group-hover:translate-y-0 group-hover:opacity-100 sm:w-full sm:-translate-y-5 sm:py-3 sm:opacity-0">
                       Show Detail
                     </button>
                   </Link>

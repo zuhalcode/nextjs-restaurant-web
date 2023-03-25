@@ -56,7 +56,7 @@ h3 {
 
 .add-to-cart-btn::after {
   content: "";
-  @apply absolute -left-[30px] -top-1 h-[1.5px] w-40 -rotate-[25deg] scale-x-0 bg-neutral duration-500;
+  @apply absolute -left-[30px] -top-1 hidden h-[1.5px] w-40 -rotate-[25deg] scale-x-0 bg-neutral duration-500;
 }
 
 .add-to-cart-btn::before {

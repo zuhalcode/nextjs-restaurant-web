@@ -30,7 +30,7 @@ const SideCart = () => {
   return (
     <>
       <div
-        className={`fixed top-0 right-0 z-30 h-full w-1/3 transform bg-white p-4 shadow-lg transition-transform duration-500 ${
+        className={`fixed top-0 right-0 z-30 hidden h-full w-1/3 transform bg-white p-4 shadow-lg transition-transform duration-500 sm:block ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
