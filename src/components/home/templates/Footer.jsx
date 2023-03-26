@@ -6,7 +6,7 @@ import { GrFacebookOption, GrLinkedinOption } from "react-icons/gr";
 const Footer = () => {
   return (
     <footer className="section-contact-us relative bg-[url('/img/bg-food-2.jpg')] bg-cover bg-center">
-      <div className="bg- relative z-10 mx-auto flex grid-cols-4 flex-col gap-5 sm:grid sm:w-[80%] sm:p-10 ">
+      <div className="relative z-10 mx-auto flex grid-cols-4 flex-col gap-5 sm:grid sm:w-[80%] sm:p-10 ">
         <div>
           <Logo mode="light" className=" sm:-ml-3" size="md" />
           <p className="px-3 text-sm text-neutral sm:px-0 ">
@@ -17,20 +17,20 @@ const Footer = () => {
         </div>
         <div className="space-y-2 px-3 pt-4 text-neutral sm:mx-auto sm:px-0 sm:text-left">
           <h4 className="text-2xl font-bold">Company</h4>
-          <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Products</li>
-            <li>Services</li>
-            <li>Contact</li>
+          <ul className="">
+            <li className="">Home</li>
+            <li className="">About</li>
+            <li className="">Products</li>
+            <li className="">Services</li>
+            <li className="">Contact</li>
           </ul>
         </div>
         <div className=" space-y-2 px-3 pt-4 capitalize text-neutral sm:mx-auto sm:px-0">
           <h4 className="text-2xl font-bold">Services</h4>
           <ul>
-            <li>healthy food</li>
-            <li>online order</li>
-            <li>home delivery</li>
+            <li className="">healthy food</li>
+            <li className="">online order</li>
+            <li className="">home delivery</li>
           </ul>
         </div>
         <div className="space-y-2 px-3 pb-3 sm:mx-auto ">
