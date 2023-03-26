@@ -64,12 +64,6 @@ export default async function handler(req, res) {
           return sendInternalServerError(res, 404, "Product not found");
         }
 
-        // Delete the old image file if it exists
-        if (product.image) {
-          const imagePath = path.join("public", product.image);
-          if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
-        }
-
         product.name = name;
         product.desc = desc;
         product.price = price;

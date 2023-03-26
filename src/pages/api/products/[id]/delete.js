@@ -1,9 +1,8 @@
 import { connect, disconnect } from "@lib/mongo";
 import { sendNotFound, sendOk } from "@lib/responseHelper";
+import Order from "@model/Order";
 import Product from "@model/Product";
 import mongoose from "mongoose";
-import path from "path";
-import fs from "fs";
 
 export default async function handler(req, res) {
   if (req.method === "DELETE") {
@@ -13,13 +12,8 @@ export default async function handler(req, res) {
       await connect();
       const product = await Product.findByIdAndDelete(productId);
 
-      // Delete the old image file if it exists
-      if (product.image) {
-        const imagePath = path.join("public", product.image);
-        if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
-      }
-
       if (!product) {
+        await disconnect();
         return sendNotFound(res, "Product Not Found");
       }
 
